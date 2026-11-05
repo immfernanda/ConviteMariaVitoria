@@ -4,341 +4,324 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Aniversário surpresa da Maria Vitória</title>
-<meta name="description" content="21/11 na Chácara Paraíso do Sol. É surpresa: não conte pra Mavi! Confirme sua presença.">
-<meta property="og:title" content="🤫 Aniversário SURPRESA da Maria Vitória">
-<meta property="og:description" content="Sábado, 21/11, na Chácara Paraíso do Sol. Não conta pra Mavi! Confirme sua presença aqui.">
+<meta name="description" content="Sábado, 21/11, na Chácara Paraíso do Sol. É surpresa: não conte pra Mavi! Confirme sua presença.">
+<meta property="og:title" content="Aniversário surpresa · Maria Vitória, 28">
+<meta property="og:description" content="Sábado, 21/11, na Chácara Paraíso do Sol. Shhh, é surpresa. Confirme sua presença aqui.">
 <meta property="og:image" content="https://immfernanda.github.io/ConviteMariaVitoria/img/og.jpg">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#ffcc29">
+<meta name="theme-color" content="#123d2f">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍺</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Caveat:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --verde:#00843d;
-  --verde-escuro:#0b5130;
-  --amarelo:#ffcc29;
-  --amarelo-claro:#fff1b8;
-  --azul:#1f3fa8;
-  --vermelho:#d62828;
-  --creme:#fffaf0;
-  --areia:#f6e7c8;
-  --texto:#2b2118;
-  --noite:#0c1838;
-  --sombra:0 10px 30px rgba(43,33,24,.18);
+  --verde:#123d2f;
+  --verde-fundo:#0e3226;
+  --verde-claro:#1d5a45;
+  --mostarda:#e0a526;
+  --creme:#f6efe1;
+  --papel:#fbf7ee;
+  --tijolo:#b8322a;
+  --azul:#24438f;
+  --tinta:#1f1b16;
+  --cinza:#7a6f61;
+  --noite:#08140f;
 }
 *{box-sizing:border-box}
 html,body{margin:0}
 body{
-  font-family:"Outfit",system-ui,sans-serif;
-  color:var(--texto);
-  background-color:var(--areia);
+  font-family:"Inter",system-ui,sans-serif;
+  color:var(--creme);
+  background-color:var(--verde-fundo);
   min-height:100vh;
   overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
   transition:background-color .9s ease;
 }
-/* calçadão de Copacabana */
+body.noite{background-color:var(--noite)}
+/* calçadão de Copacabana, tom sobre tom */
 .calcadao{
-  position:fixed;inset:0;z-index:-2;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='64' viewBox='0 0 160 64'%3E%3Cpath d='M0 32 C40 0 40 0 80 32 S120 64 160 32 V64 H0Z' fill='%232b2118' fill-opacity='.075'/%3E%3C/svg%3E");
-  background-size:160px 64px;
-  transition:opacity .9s ease;
+  position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='72' viewBox='0 0 180 72'%3E%3Cpath d='M0 36 C45 0 45 0 90 36 S135 72 180 36 V72 H0Z' fill='%23f6efe1' fill-opacity='.035'/%3E%3C/svg%3E");
+  background-size:180px 72px;
 }
-.ceu-noite{
-  position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;
-  background:
-    radial-gradient(1px 1px at 12% 20%,#fff8 50%,transparent 51%),
-    radial-gradient(1.5px 1.5px at 70% 12%,#fffa 50%,transparent 51%),
-    radial-gradient(1px 1px at 40% 35%,#fff7 50%,transparent 51%),
-    radial-gradient(1.5px 1.5px at 88% 40%,#fff9 50%,transparent 51%),
-    radial-gradient(1px 1px at 25% 60%,#fff6 50%,transparent 51%),
-    radial-gradient(1px 1px at 60% 75%,#fff6 50%,transparent 51%),
-    linear-gradient(180deg,#0c1838 0%,#1b2a5c 70%,#2c2350 100%);
-  transition:opacity .9s ease;
-}
-body.noite .ceu-noite{opacity:1}
-body.noite .calcadao{opacity:.25}
 
-/* gambiarra de lampadinhas */
-.gambiarra{position:relative;height:70px;margin:0 -8px;pointer-events:none}
-.gambiarra svg{position:absolute;inset:0;width:100%;height:100%}
-.lampadas{position:absolute;inset:0;display:flex;justify-content:space-around;padding:0 10px}
+/* cordão de lâmpadas */
+.cordao{position:relative;height:64px;margin:0 -16px;pointer-events:none}
+.cordao svg{position:absolute;inset:0;width:100%;height:100%}
+.lampadas{position:absolute;inset:0;display:flex;justify-content:space-around;padding:0 14px}
 .lampada{
-  width:14px;height:18px;border-radius:50% 50% 45% 45%;
-  margin-top:var(--y);
-  background:var(--c);
-  box-shadow:0 0 10px 2px var(--c);
-  animation:pisca 2.4s ease-in-out infinite;animation-delay:var(--d);
-  position:relative;
+  width:9px;height:12px;border-radius:50% 50% 45% 45%;margin-top:var(--y);
+  background:#ffd98a;box-shadow:0 0 12px 3px rgba(255,200,110,.45);
+  animation:brilho 3.5s ease-in-out infinite;animation-delay:var(--d);position:relative;
 }
-.lampada::before{content:"";position:absolute;top:-6px;left:4px;width:6px;height:7px;background:#3a3a3a;border-radius:2px}
-@keyframes pisca{0%,100%{opacity:1}50%{opacity:.55}}
+.lampada::before{content:"";position:absolute;top:-4px;left:2px;width:5px;height:5px;background:#2a2a2a;border-radius:1px}
+@keyframes brilho{0%,100%{opacity:1}50%{opacity:.7}}
 
-main{max-width:520px;margin:0 auto;padding:0 16px 40px;position:relative}
+main{max-width:540px;margin:0 auto;padding:0 20px 48px;position:relative}
 
 /* topo */
-.hero{text-align:center;padding-top:6px;position:relative}
-.selo{
-  display:inline-block;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;
-  background:var(--verde);color:#fff;padding:6px 14px;border-radius:999px;
-  box-shadow:0 3px 0 var(--verde-escuro);
+.hero{text-align:center;padding-top:18px}
+.eyebrow{
+  font-size:.72rem;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--mostarda);
 }
 h1.nome{
-  font-family:"Shrikhand",cursive;font-weight:400;
-  font-size:clamp(3rem,15vw,5.2rem);line-height:.95;margin:.25em 0 .05em;
-  color:var(--amarelo);
-  text-shadow:3px 3px 0 var(--verde),6px 6px 0 var(--azul),9px 9px 14px rgba(0,0,0,.18);
-  transform:rotate(-3deg);
+  font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:400;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(3.2rem,15vw,5.4rem);line-height:.92;letter-spacing:-.02em;
+  margin:.32em 0 .18em;color:var(--creme);
 }
-.subtitulo{font-family:"Caveat",cursive;font-size:1.7rem;font-weight:700;color:var(--azul);margin:.2em 0 0;transition:color .9s}
-body.noite .subtitulo{color:var(--amarelo-claro)}
-.contagem{margin-top:6px;font-weight:600;color:var(--verde-escuro);transition:color .9s}
-body.noite .contagem{color:#cfe8d8}
-
-/* psiu - é surpresa */
-.psiu{
-  margin:22px auto 6px;max-width:440px;position:relative;
-  background:var(--amarelo);border-radius:6px;padding:16px 18px 16px 70px;
-  transform:rotate(-1.5deg);box-shadow:var(--sombra);
-  border:3px dashed var(--texto);
+.idade{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  font-family:"Fraunces",Georgia,serif;font-size:1.15rem;color:var(--mostarda);letter-spacing:.04em;
 }
-.psiu .dedo{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:2.4rem}
-.psiu strong{display:block;font-family:"Shrikhand",cursive;font-weight:400;font-size:1.35rem;color:var(--vermelho);letter-spacing:.02em}
-.psiu p{margin:4px 0 0;font-weight:500;line-height:1.35}
+.idade::before,.idade::after{content:"";height:1px;width:44px;background:currentColor;opacity:.6}
+.lede{max-width:360px;margin:18px auto 0;font-size:1.02rem;line-height:1.55;color:#d9d0bf}
 
-/* informações */
-.infos{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0 8px}
-.info{background:var(--creme);border-radius:14px;padding:14px;box-shadow:var(--sombra);position:relative;overflow:hidden}
-.info::after{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:repeating-linear-gradient(90deg,var(--verde) 0 14px,var(--amarelo) 14px 28px,var(--azul) 28px 42px)}
-.info .dia{font-family:"Shrikhand",cursive;font-size:3rem;line-height:1;color:var(--vermelho)}
-.info .mes{font-weight:700;text-transform:uppercase;letter-spacing:.06em}
-.info small{display:block;color:#6b5a48;margin-top:4px;font-size:.9rem;line-height:1.35}
-.info .local{font-family:"Shrikhand",cursive;font-size:1.15rem;line-height:1.1;color:var(--verde-escuro)}
-.info a{color:var(--azul);font-weight:600}
-.dayuse{
-  background:var(--creme);border-radius:14px;padding:14px 16px;box-shadow:var(--sombra);
-  display:flex;gap:12px;align-items:center;margin-bottom:24px;
+/* natureza-morta do boteco */
+.cena{position:relative;height:230px;max-width:340px;margin:22px auto 0}
+.cena img{position:absolute;bottom:14px;filter:drop-shadow(0 10px 12px rgba(0,0,0,.35))}
+.cena .gs{height:220px;left:50%;transform:translateX(-62%)}
+.cena .cad{height:118px;left:50%;transform:translateX(-8%)}
+.cena .copo{height:54px;left:50%;transform:translateX(-118%)}
+.cena .chao{position:absolute;left:8%;right:8%;bottom:12px;height:1px;background:linear-gradient(90deg,transparent,rgba(246,239,225,.5),transparent)}
+
+/* surpresa */
+.shh{
+  margin:30px auto 0;border:1px solid rgba(224,165,38,.55);border-radius:2px;
+  padding:20px 22px;text-align:center;position:relative;
 }
-.dayuse .preco{font-family:"Shrikhand",cursive;font-size:1.6rem;color:var(--verde);white-space:nowrap}
-.dayuse p{margin:0;font-size:.95rem;line-height:1.35}
+.shh::before{
+  content:"SHHH";position:absolute;top:-9px;left:50%;transform:translateX(-50%);
+  background:var(--verde-fundo);padding:0 12px;font-size:.7rem;letter-spacing:.4em;color:var(--mostarda);font-weight:600;
+  transition:background-color .9s;
+}
+body.noite .shh::before{background:var(--noite)}
+.shh strong{display:block;font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:400;font-size:1.6rem;color:var(--creme)}
+.shh p{margin:6px 0 0;color:#d9d0bf;line-height:1.5;font-size:.97rem}
 
-/* comanda (cartão de confirmação) */
+/* infos */
+.infos{display:grid;grid-template-columns:1fr 1px 1fr;gap:18px;margin:36px 0 0;text-align:center}
+.infos .sep{background:rgba(246,239,225,.25)}
+.rotulo{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mostarda);font-weight:600;margin-bottom:8px}
+.grande{font-family:"Fraunces",Georgia,serif;font-size:1.45rem;line-height:1.15;color:var(--creme)}
+.infos small{display:block;color:#cfc6b4;margin-top:6px;font-size:.88rem;line-height:1.45}
+.infos a{color:var(--mostarda);text-decoration:none;border-bottom:1px solid rgba(224,165,38,.5)}
+.contagem{text-align:center;margin-top:26px;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:#a99f8c}
+
+/* comanda */
 .comanda{
-  position:relative;background:var(--creme);margin-top:58px;
-  padding:72px 22px 26px;border-radius:4px;box-shadow:var(--sombra);
-  background-image:repeating-linear-gradient(transparent 0 31px,#e7dcc6 31px 32px);
-  background-position:0 92px;
+  position:relative;background:var(--papel);color:var(--tinta);margin-top:84px;
+  padding:78px 24px 28px;border-radius:2px;
+  box-shadow:0 24px 50px rgba(0,0,0,.35);
+  background-image:repeating-linear-gradient(transparent 0 31px,#ebe1cd 31px 32px);
+  background-position:0 100px;
 }
 .comanda::before,.comanda::after{
   content:"";position:absolute;left:0;right:0;height:12px;
-  background:radial-gradient(circle at 8px -2px,transparent 9px,var(--creme) 10px) repeat-x;
+  background:radial-gradient(circle at 8px -2px,transparent 9px,var(--papel) 10px) repeat-x;
   background-size:16px 12px;
 }
 .comanda::before{top:-11px;transform:rotate(180deg)}
 .comanda::after{bottom:-11px}
-.cabecalho{
-  display:flex;justify-content:space-between;align-items:baseline;
-  font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.75rem;color:var(--vermelho);
-  border-bottom:2px solid var(--vermelho);padding-bottom:6px;margin-bottom:14px;
-}
 .medalhao{
-  position:absolute;left:50%;top:-58px;transform:translateX(-50%);
-  width:112px;height:132px;border-radius:50%;
-  border:5px solid var(--amarelo);outline:4px solid var(--verde);
-  background:var(--azul);overflow:hidden;box-shadow:var(--sombra);
+  position:absolute;left:50%;top:-62px;transform:translateX(-50%);
+  width:116px;height:136px;border-radius:50%;
+  border:3px solid var(--mostarda);box-shadow:0 0 0 6px var(--papel),0 10px 24px rgba(0,0,0,.3);
+  background:var(--verde);overflow:hidden;
 }
 .medalhao img{width:100%;height:100%;object-fit:cover}
-.medalhao img.fallback{object-fit:contain;padding:14px}
-.medalhao-emoji{position:absolute;left:calc(50% + 34px);top:40px;font-size:2rem;transform:rotate(14deg);filter:drop-shadow(0 2px 2px rgba(0,0,0,.25))}
-.comanda h2{font-family:"Shrikhand",cursive;font-weight:400;font-size:1.65rem;text-align:center;margin:0;color:var(--verde-escuro)}
-.prazo{text-align:center;font-family:"Caveat",cursive;font-size:1.35rem;font-weight:700;color:var(--vermelho);margin:2px 0 16px}
-
-.escolha{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
-.escolha button{
-  font:inherit;font-weight:700;font-size:1.02rem;padding:14px 8px;border-radius:12px;cursor:pointer;
-  border:2.5px solid var(--texto);background:#fff;color:var(--texto);
-  box-shadow:0 4px 0 var(--texto);transition:transform .12s, box-shadow .12s, background .2s;
+.medalhao img.fallback{object-fit:contain;padding:18px}
+.cabecalho{
+  display:flex;justify-content:space-between;align-items:baseline;
+  font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:.72rem;color:var(--tijolo);
+  border-bottom:2px solid var(--tijolo);padding-bottom:7px;margin-bottom:12px;
 }
-.escolha button:active{transform:translateY(3px);box-shadow:0 1px 0 var(--texto)}
-.escolha button[aria-pressed="true"].sim{background:var(--verde);color:#fff}
-.escolha button[aria-pressed="true"].nao{background:var(--azul);color:#fff}
+.itens{font-family:"Caveat",cursive;font-size:1.45rem;line-height:32px;color:#2b3a8a;margin:0 0 18px;padding:0;list-style:none}
+.itens li{display:flex;align-items:baseline;gap:6px}
+.itens li .pts{flex:1;border-bottom:2px dotted rgba(43,58,138,.45);transform:translateY(-6px)}
+.itens .obs{font-size:1.1rem;color:#5a6aa8;line-height:24px}
+.comanda h2{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:1.6rem;text-align:center;margin:8px 0 0;color:var(--verde)}
+.prazo{text-align:center;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tijolo);margin:6px 0 18px;font-weight:600}
+
+.escolha{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.escolha button{
+  font:inherit;font-weight:600;font-size:.98rem;padding:14px 8px;border-radius:3px;cursor:pointer;
+  border:1.5px solid var(--tinta);background:transparent;color:var(--tinta);
+  transition:background .2s,color .2s;
+}
+.escolha button[aria-pressed="true"].sim{background:var(--verde);border-color:var(--verde);color:var(--creme)}
+.escolha button[aria-pressed="true"].nao{background:var(--tinta);color:var(--creme)}
 
 .campo{margin-bottom:14px}
-.campo label{display:block;font-weight:600;margin-bottom:5px}
-.campo label .opc{font-weight:400;color:#8a7864;font-size:.88rem}
+.campo label{display:block;font-weight:600;font-size:.9rem;margin-bottom:6px}
+.campo label .opc{font-weight:400;color:var(--cinza)}
 .campo input,.campo select,.campo textarea{
-  width:100%;font:inherit;font-size:16px;padding:12px 13px;border-radius:10px;
-  border:2px solid #d8c9ad;background:#fff;color:var(--texto);
+  width:100%;font:inherit;font-size:16px;padding:12px 13px;border-radius:3px;
+  border:1px solid #d6cab2;background:#fff;color:var(--tinta);
 }
 .campo textarea{min-height:84px;resize:vertical}
-.campo input:focus,.campo select:focus,.campo textarea:focus{outline:none;border-color:var(--verde);box-shadow:0 0 0 3px #00843d33}
-.campo.erro input,.campo.erro select{border-color:var(--vermelho)}
-.msg-erro{color:var(--vermelho);font-size:.88rem;margin-top:4px;display:none}
+.campo input:focus,.campo select:focus,.campo textarea:focus{outline:none;border-color:var(--verde);box-shadow:0 0 0 3px rgba(18,61,47,.15)}
+.campo.erro input,.campo.erro select{border-color:var(--tijolo)}
+.msg-erro{color:var(--tijolo);font-size:.84rem;margin-top:4px;display:none}
 .campo.erro .msg-erro{display:block}
-.so-sim{transition:opacity .25s}
 .escondido{display:none!important}
 
 .enviar{
-  width:100%;font:inherit;font-family:"Shrikhand",cursive;font-size:1.3rem;letter-spacing:.02em;
-  padding:15px;border-radius:14px;border:none;cursor:pointer;
-  background:var(--vermelho);color:#fff;box-shadow:0 5px 0 #8f1717;margin-top:6px;
-  transition:transform .12s, box-shadow .12s, opacity .2s;
+  width:100%;font:inherit;font-weight:600;font-size:1rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:16px;border-radius:3px;border:none;cursor:pointer;
+  background:var(--tijolo);color:#fff;margin-top:6px;transition:background .2s,opacity .2s;
 }
-.enviar:active{transform:translateY(4px);box-shadow:0 1px 0 #8f1717}
+.enviar:hover{background:#9e2a23}
 .enviar:disabled{opacity:.6;cursor:wait}
-.nota{font-size:.82rem;color:#8a7864;text-align:center;margin:14px 0 0}
+.nota{font-size:.8rem;color:var(--cinza);text-align:center;margin:14px 0 0}
 
-.sucesso{text-align:center;padding:6px 0}
-.sucesso .big{font-size:3rem}
-.sucesso h2{margin-bottom:6px}
-.sucesso p{font-size:1.05rem;line-height:1.45}
-.sucesso .lembrete{background:var(--amarelo);border-radius:10px;padding:10px 12px;font-weight:600;margin-top:14px}
-.sucesso a.btn-link{display:inline-block;margin-top:12px;color:var(--azul);font-weight:600}
+.sucesso{text-align:center;padding:4px 0 6px}
+.sucesso h2{margin-bottom:8px}
+.sucesso p{font-size:1rem;line-height:1.55}
+.sucesso .lembrete{border-top:1px solid #e3d8c3;padding-top:14px;margin-top:16px;font-size:.92rem;color:var(--cinza)}
+.sucesso a.btn-link{display:inline-block;margin-top:12px;color:var(--verde);font-weight:600;font-size:.9rem}
 
-/* rodapé com os elementos */
-.varal{
-  display:flex;justify-content:center;align-items:flex-end;gap:2px;
-  margin:40px -16px 0;padding:0 6px;height:120px;
+/* carimbo */
+.carimbo{
+  position:absolute;right:14px;top:120px;z-index:5;pointer-events:none;
+  font-family:"Inter",sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:1.15rem;
+  color:var(--c);border:3px solid var(--c);border-radius:4px;padding:6px 12px;
+  transform:rotate(-12deg) scale(2.4);opacity:0;mix-blend-mode:multiply;
+  -webkit-mask-image:radial-gradient(circle at 30% 40%,#000 60%,rgba(0,0,0,.75) 100%);
 }
-.dw{flex:0 1 calc((100% - 12px)/7);display:flex;justify-content:center;align-items:flex-end;height:100%}
-.dw img{
-  max-height:100%;max-width:100%;
-  transform-origin:50% 100%;animation:balanca 3.2s ease-in-out infinite;animation-delay:var(--d);
-  filter:drop-shadow(0 4px 3px rgba(0,0,0,.18));cursor:pointer;
-}
-.dw img:hover,.dw img.pulo{animation:pulinho .55s ease}
-@keyframes balanca{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
-@keyframes pulinho{0%,100%{transform:translateY(0)}40%{transform:translateY(-22px) rotate(-6deg)}}
-.chao{height:14px;margin:0 -16px;background:repeating-linear-gradient(90deg,var(--verde) 0 22px,var(--amarelo) 22px 44px)}
-.assinatura{text-align:center;font-family:"Caveat",cursive;font-size:1.3rem;margin-top:14px;color:var(--verde-escuro);transition:color .9s}
-body.noite .assinatura{color:var(--amarelo-claro)}
+.carimbo.bate{animation:carimba .45s cubic-bezier(.3,1.6,.5,1) forwards}
+@keyframes carimba{to{transform:rotate(-12deg) scale(1);opacity:.85}}
 
-/* nadadoras flutuando nos cantos */
-.flutua{position:fixed;z-index:0;pointer-events:none;width:clamp(70px,16vw,130px);opacity:.9;filter:drop-shadow(0 6px 6px rgba(0,0,0,.15))}
-.flutua.e{top:70px;left:-14px;animation:boia1 7s ease-in-out infinite}
-.flutua.d{top:110px;right:-10px;animation:boia2 8s ease-in-out infinite}
-@keyframes boia1{0%,100%{transform:translate(0,0) rotate(-6deg)}50%{transform:translate(10px,16px) rotate(4deg)}}
-@keyframes boia2{0%,100%{transform:translate(0,0) rotate(8deg)}50%{transform:translate(-12px,12px) rotate(-3deg)}}
-main > *{position:relative;z-index:1}
+/* rodapé */
+.friso{
+  height:40px;margin:56px -20px 0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Crect width='80' height='40' fill='%23f6efe1'/%3E%3Cpath d='M0 20 C20 0 20 0 40 20 S60 40 80 20 V40 H0Z' fill='%231f1b16'/%3E%3C/svg%3E");
+  background-size:80px 40px;opacity:.9;
+}
+.assinatura{text-align:center;font-family:"Fraunces",Georgia,serif;font-style:italic;font-size:1.3rem;margin-top:22px;color:var(--creme)}
+
+/* brinde (sucesso) */
+.brinde{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .4s}
+.brinde.ativo{opacity:1;background:rgba(8,20,15,.55)}
+.brinde .par{position:relative;width:240px;height:200px}
+.brinde img{position:absolute;bottom:0;height:150px;filter:drop-shadow(0 10px 14px rgba(0,0,0,.4))}
+.brinde .c1{left:-40vw}
+.brinde .c2{right:-40vw;transform:scaleX(-1)}
+.brinde.ativo .c1{animation:entraE 1.1s cubic-bezier(.3,1.2,.5,1) forwards}
+.brinde.ativo .c2{animation:entraD 1.1s cubic-bezier(.3,1.2,.5,1) forwards}
+@keyframes entraE{0%{left:-40vw;transform:rotate(0)}70%{left:38px;transform:rotate(14deg)}100%{left:30px;transform:rotate(10deg)}}
+@keyframes entraD{0%{right:-40vw;transform:scaleX(-1) rotate(0)}70%{right:38px;transform:scaleX(-1) rotate(14deg)}100%{right:30px;transform:scaleX(-1) rotate(10deg)}}
+.brinde .timtim{
+  position:absolute;left:0;right:0;top:-34px;text-align:center;
+  font-family:"Fraunces",Georgia,serif;font-style:italic;font-size:2.4rem;color:var(--creme);
+  opacity:0;transform:translateY(10px);
+}
+.brinde.ativo .timtim{animation:aparece .5s .8s forwards}
+@keyframes aparece{to{opacity:1;transform:translateY(0)}}
+.gota{position:absolute;left:50%;top:40px;width:9px;height:9px;border-radius:50%;background:#fff8e6;opacity:0}
+.brinde.ativo .gota{animation:espirra .9s .75s ease-out forwards}
+@keyframes espirra{0%{opacity:1;transform:translate(0,0)}100%{opacity:0;transform:translate(var(--x),var(--y))}}
 
 /* cachorro do "não" */
 .palco{
   position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  pointer-events:none;opacity:0;transition:opacity .5s ease;padding:16px;
+  pointer-events:none;opacity:0;transition:opacity .5s ease;padding:20px;
 }
-.palco.ativo{opacity:1;background:rgba(12,24,56,.45)}
-.palco.ativo.clicavel{pointer-events:auto}
-.palco .dog{width:min(62vw,280px);transform:scale(.4) translateY(60px);transition:transform .6s cubic-bezier(.2,1.4,.4,1);filter:drop-shadow(0 12px 18px rgba(0,0,0,.4));position:relative;z-index:2}
-.palco.ativo .dog{transform:scale(1) translateY(0)}
+.palco.ativo{opacity:1;pointer-events:auto;background:rgba(8,20,15,.6)}
+.palco .dog{width:min(58vw,260px);transform:translateY(80px);transition:transform .6s cubic-bezier(.2,1.3,.4,1);filter:drop-shadow(0 14px 20px rgba(0,0,0,.5))}
+.palco.ativo .dog{transform:translateY(0)}
 .balao{
-  position:relative;z-index:3;max-width:320px;background:#fff;color:var(--texto);border-radius:18px;
-  padding:14px 18px;font-weight:600;font-size:1.08rem;line-height:1.35;text-align:center;margin-bottom:18px;
-  box-shadow:0 10px 30px rgba(0,0,0,.35);transform:scale(.6);opacity:0;transition:all .4s .35s;
+  position:relative;max-width:320px;background:var(--papel);color:var(--tinta);border-radius:4px;
+  padding:14px 18px;font-weight:500;font-size:1.02rem;line-height:1.45;text-align:center;margin-bottom:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);opacity:0;transform:translateY(8px);transition:all .4s .35s;
 }
-.balao::after{content:"";position:absolute;left:50%;bottom:-12px;transform:translateX(-50%);border:12px solid transparent;border-top-color:#fff;border-bottom:0}
-.palco.ativo .balao{transform:scale(1);opacity:1}
-.fumaca{position:absolute;left:50%;top:55%;width:10px;height:10px;z-index:1}
-.fumaca span{
-  position:absolute;width:var(--s);height:var(--s);border-radius:50%;
-  background:radial-gradient(circle,var(--c) 0%,transparent 70%);
-  opacity:0;left:calc(var(--s) / -2);top:calc(var(--s) / -2);
-}
-.palco.ativo .fumaca span{animation:fumaca 2.6s ease-out forwards;animation-delay:var(--d)}
-@keyframes fumaca{0%{opacity:.85;transform:translate(0,0) scale(.3)}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(1.6)}}
+.balao::after{content:"";position:absolute;left:50%;bottom:-10px;transform:translateX(-50%);border:10px solid transparent;border-top-color:var(--papel);border-bottom:0}
+.palco.ativo .balao{opacity:1;transform:translateY(0)}
+.palco .fechar{margin-top:14px;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:#bfb6a4}
 
-/* mergulho do sucesso */
-.mergulhadora{position:fixed;z-index:60;width:clamp(110px,28vw,180px);pointer-events:none;left:-30vw;top:-30vh}
-.mergulhadora.vai{animation:mergulha 2.4s cubic-bezier(.45,.05,.6,1) forwards}
-@keyframes mergulha{
-  0%{left:-30vw;top:-25vh;transform:rotate(-40deg)}
-  45%{left:38vw;top:12vh;transform:rotate(-5deg)}
-  100%{left:60vw;top:110vh;transform:rotate(25deg)}
-}
-.bolha{position:fixed;z-index:59;pointer-events:none;border-radius:50%;animation:bolha 1.6s ease-out forwards}
-@keyframes bolha{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:translateY(-40px) scale(.2)}}
-.splash{position:fixed;z-index:58;left:50%;bottom:-40px;width:10px;height:10px;pointer-events:none}
-.splash i{position:absolute;width:12px;height:12px;border-radius:50%;animation:splash 1.2s ease-out forwards}
-@keyframes splash{0%{transform:translate(0,0);opacity:1}100%{transform:translate(var(--x),var(--y));opacity:0}}
-
-/* encerrado */
 body.encerrado .so-aberto{display:none!important}
 
 @media (max-width:380px){
-  .infos{grid-template-columns:1fr}
-  .psiu{padding-left:60px}
+  .infos{grid-template-columns:1fr;gap:22px}
+  .infos .sep{height:1px;width:60px;margin:0 auto}
 }
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important}
+  *,*::before,*::after{animation-duration:.01s!important;transition:none!important}
 }
 </style>
 </head>
 <body>
 <div class="calcadao" aria-hidden="true"></div>
-<div class="ceu-noite" aria-hidden="true"></div>
-<img class="flutua e" src="img/mergulho2.png" alt="" aria-hidden="true">
-<img class="flutua d" src="img/mergulho.png" alt="" aria-hidden="true">
 
 <main>
-  <div class="gambiarra" aria-hidden="true">
-    <svg viewBox="0 0 100 70" preserveAspectRatio="none"><path d="M0 8 Q25 48 50 30 T100 8" fill="none" stroke="#3a3a3a" stroke-width="1.4" vector-effect="non-scaling-stroke"/></svg>
+  <div class="cordao" aria-hidden="true">
+    <svg viewBox="0 0 100 64" preserveAspectRatio="none"><path d="M0 6 Q25 44 50 26 T100 6" fill="none" stroke="#2a2a2a" stroke-width="1.2" vector-effect="non-scaling-stroke"/></svg>
     <div class="lampadas" id="lampadas"></div>
   </div>
 
   <header class="hero">
-    <span class="selo">🤫 Aniversário surpresa</span>
+    <div class="eyebrow">Aniversário surpresa</div>
     <h1 class="nome">Maria<br>Vitória</h1>
-    <p class="subtitulo">bora de boteco, chinelo e piscina?</p>
-    <p class="contagem" id="contagem"></p>
+    <div class="idade">28 anos</div>
+    <p class="lede">Um sábado de sol, chinelo, piscina e copo americano pra comemorar a Mavi.</p>
+    <div class="cena" aria-hidden="true">
+      <img class="gs" src="img/guarda-sol.png" alt="">
+      <img class="cad" src="img/cadeira-vermelha.png" alt="">
+      <img class="copo" src="img/copo.png" alt="">
+      <div class="chao"></div>
+    </div>
   </header>
 
-  <section class="psiu" role="note">
-    <span class="dedo" aria-hidden="true">🤫</span>
-    <strong>PSIU! É SURPRESA!</strong>
-    <p>A Mavi não sabe de nada. Não conta, não dá indireta e nada de postar story antes da hora!</p>
+  <section class="shh" role="note">
+    <strong>Ela não sabe de nada.</strong>
+    <p>Nada de comentar, dar indireta ou postar antes da hora. Bico fechado até o dia 21.</p>
   </section>
 
   <section class="infos">
-    <div class="info">
-      <div class="dia">21</div>
-      <div class="mes">de novembro</div>
-      <small>sábado<br>das 9h às 18h</small>
+    <div>
+      <div class="rotulo">Quando</div>
+      <div class="grande">Sábado,<br>21 de novembro</div>
+      <small>das 9h às 18h</small>
     </div>
-    <div class="info">
-      <div class="local">Chácara Paraíso do Sol</div>
-      <small>Estr. do Galarda, 818<br>Jd. Santa Nely · Campo Largo/PR</small>
-      <small><a href="https://maps.google.com/?q=Ch%C3%A1cara+Para%C3%ADso+do+Sol+Estrada+do+Galarda+818+Campo+Largo" target="_blank" rel="noopener">Ver no mapa</a> · <a href="https://www.instagram.com/chacara.paraisodosol/" target="_blank" rel="noopener">Insta</a></small>
+    <div class="sep" aria-hidden="true"></div>
+    <div>
+      <div class="rotulo">Onde</div>
+      <div class="grande">Chácara Paraíso do Sol</div>
+      <small>Estr. do Galarda, 818 · Jd. Santa Nely<br>Campo Largo/PR</small>
+      <small><a href="https://maps.google.com/?q=Ch%C3%A1cara+Para%C3%ADso+do+Sol+Estrada+do+Galarda+818+Campo+Largo" target="_blank" rel="noopener">mapa</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/chacara.paraisodosol/" target="_blank" rel="noopener">instagram</a></small>
     </div>
   </section>
-
-  <section class="dayuse">
-    <div class="preco">R$ 50</div>
-    <p><strong>Day use por pessoa</strong> (valor de 05/11, pode mudar até o dia). Leve roupa de banho, chinelo, protetor e muita disposição.</p>
-  </section>
+  <div class="contagem" id="contagem"></div>
 
   <section class="comanda" id="comanda">
-    <div class="medalhao">
-      <img id="foto" src="img/mavi.jpg" alt="Maria Vitória">
-    </div>
-    <span class="medalhao-emoji" aria-hidden="true">🍺</span>
+    <div class="medalhao"><img id="foto" src="img/mavi.jpg" alt="Maria Vitória" onerror="this.onerror=null;this.src='img/copo.png';this.classList.add('fallback')"></div>
+    <div class="cabecalho"><span>Comanda nº 2611</span><span>Mesa da Mavi</span></div>
+    <span class="carimbo" id="carimbo"></span>
 
-    <div class="cabecalho"><span>Comanda nº 2111</span><span>Mesa da Mavi</span></div>
+    <ul class="itens">
+      <li>Aniver da Mavi <span class="pts"></span> 28 anos</li>
+      <li>Sáb 21/11 <span class="pts"></span> 9h às 18h</li>
+      <li>1x Day use <span class="pts"></span> R$ 50,00</li>
+      <li class="obs">* valor de 05/11, pode mudar até o dia</li>
+    </ul>
 
     <div id="area-form">
       <h2 id="titulo-form">Confirme sua presença</h2>
-      <p class="prazo so-aberto">Por favor, confirme até 18/11</p>
+      <p class="prazo so-aberto">até 18 de novembro</p>
 
       <form id="form" class="so-aberto" novalidate>
         <div class="escolha" role="group" aria-label="Você vai?">
-          <button type="button" class="sim" data-v="sim" aria-pressed="false">Tô dentro! 🏖️</button>
-          <button type="button" class="nao" data-v="nao" aria-pressed="false">Não poderei 😢</button>
+          <button type="button" class="sim" data-v="sim" aria-pressed="false">Tô dentro</button>
+          <button type="button" class="nao" data-v="nao" aria-pressed="false">Não poderei</button>
         </div>
-        <div class="campo" id="c-presenca"><div class="msg-erro">Escolhe uma opção aí em cima 👆</div></div>
+        <div class="campo" id="c-presenca"><div class="msg-erro">Escolha uma das opções acima</div></div>
 
         <div class="campo" id="c-nome">
           <label for="nome">Seu nome completo</label>
           <input id="nome" name="nome" autocomplete="name" placeholder="Nome e sobrenome">
-          <div class="msg-erro">Coloca nome e sobrenome, por favor</div>
+          <div class="msg-erro">Coloque nome e sobrenome, por favor</div>
         </div>
 
         <div class="campo so-sim" id="c-acomp">
@@ -360,35 +343,34 @@ body.encerrado .so-aberto{display:none!important}
         </div>
 
         <div class="campo" id="c-recado">
-          <label for="recado">Deixa um recado pra Mavi <span class="opc">(opcional, ela só vê no dia 🤫)</span></label>
+          <label for="recado">Um recado pra Mavi <span class="opc">(opcional, ela só lê no dia)</span></label>
           <textarea id="recado" name="recado" maxlength="500" placeholder="Feliz aniversário, Mavi!"></textarea>
         </div>
 
-        <button type="submit" class="enviar" id="btn-enviar">Fechar a comanda 🍺</button>
-        <p class="nota">Confirme até 18/11. Os dados são só para a organização da festa.</p>
+        <button type="submit" class="enviar" id="btn-enviar">Fechar a comanda</button>
+        <p class="nota">Os dados são usados só para a organização da festa.</p>
       </form>
     </div>
   </section>
 
-  <div class="varal" id="varal" aria-hidden="true">
-    <div class="dw"><img src="img/guarda-sol.png" alt="" style="--d:0s"></div>
-    <div class="dw"><img src="img/cadeira-vermelha.png" alt="" style="--d:.3s"></div>
-    <div class="dw"><img src="img/copo.png" alt="" style="--d:.6s"></div>
-    <div class="dw"><img src="img/mesa-amarela.png" alt="" style="--d:.9s"></div>
-    <div class="dw"><img src="img/chinelo.png" alt="" style="--d:1.2s"></div>
-    <div class="dw"><img src="img/cadeira-azul.png" alt="" style="--d:1.5s"></div>
-    <div class="dw"><img src="img/nadadora-prancha.png" alt="" style="--d:1.8s"></div>
-  </div>
-  <div class="chao" aria-hidden="true"></div>
-  <p class="assinatura">Te esperamos lá! 💚💛</p>
+  <div class="friso" aria-hidden="true"></div>
+  <p class="assinatura">Te esperamos lá.</p>
 </main>
 
 <div class="palco" id="palco" aria-live="polite">
   <div class="balao" id="balao"></div>
   <img class="dog" src="img/dog.png" alt="Cachorro de óculos escuros">
-  <div class="fumaca" id="fumaca"></div>
+  <div class="fechar">toque para fechar</div>
 </div>
-<img class="mergulhadora" id="mergulhadora" src="img/mergulho.png" alt="" aria-hidden="true">
+
+<div class="brinde" id="brinde" aria-hidden="true">
+  <div class="par">
+    <div class="timtim">Tim-tim!</div>
+    <img class="c1" src="img/copo.png" alt="">
+    <img class="c2" src="img/copo.png" alt="">
+    <div id="gotas"></div>
+  </div>
+</div>
 
 <script>
 /* ====== CONFIGURAÇÃO ====== */
@@ -402,115 +384,73 @@ const CONFIG = {
   NOME_CURTO: "Mavi",
   DATA_FESTA: new Date(2026, 10, 21, 9, 0, 0),   // 21/11/2026 9h (mês 0 = janeiro)
   PRAZO_FIM: new Date(2026, 10, 19, 0, 0, 0),    // fecha à meia-noite de 18 para 19/11
-  FRASE_NAO: "Vai perder? Então sobra mais cerveja pra mim 🍺😎",
-  FRASE_ENCERRADO: "Ih, a comanda já fechou! As confirmações iam até 18/11. Fala direto com quem te mandou o convite 😎"
+  FRASE_NAO: "Vai perder? Então sobra mais cerveja pra mim.",
+  FRASE_ENCERRADO: "A comanda já fechou: as confirmações iam até 18/11. Fala direto com quem te mandou o convite."
 };
 
-/* ====== lampadinhas da gambiarra ====== */
+/* ====== lâmpadas ====== */
 (function(){
-  const cores=["#ffcc29","#00b050","#3d6bff","#ff5a5a","#ffffff","#ffa630"];
   const box=document.getElementById("lampadas");
-  const n = window.innerWidth < 480 ? 11 : 15;
+  const n = window.innerWidth < 480 ? 10 : 14;
   for(let i=0;i<n;i++){
-    const t=(i+.5)/n;
-    // acompanha a curva do fio (Q 25 48 50 30 T 100 8)
-    let y;
-    if(t<.5){const u=t*2;y=(1-u)*(1-u)*8+2*(1-u)*u*48+u*u*30;}
-    else{const u=(t-.5)*2;y=(1-u)*(1-u)*30+2*(1-u)*u*12+u*u*8;}
+    const t=(i+.5)/n; let y;
+    if(t<.5){const u=t*2;y=(1-u)*(1-u)*6+2*(1-u)*u*44+u*u*26;}
+    else{const u=(t-.5)*2;y=(1-u)*(1-u)*26+2*(1-u)*u*8+u*u*6;}
     const b=document.createElement("span");
     b.className="lampada";
     b.style.setProperty("--y",(y+2)+"px");
-    b.style.setProperty("--c",cores[i%cores.length]);
-    b.style.setProperty("--d",(i*.17)+"s");
+    b.style.setProperty("--d",(i*.31)+"s");
     box.appendChild(b);
   }
 })();
 
-/* ====== foto do medalhão (fallback se não tiver foto) ====== */
-const foto=document.getElementById("foto");
-foto.addEventListener("error",()=>{foto.src="img/copo.png";foto.classList.add("fallback");},{once:true});
+/* ====== foto (fallback se não tiver) ====== */
 
-/* ====== contagem regressiva ====== */
+/* ====== contagem ====== */
 (function(){
   const el=document.getElementById("contagem");
   const hoje=new Date(); hoje.setHours(0,0,0,0);
   const festa=new Date(CONFIG.DATA_FESTA); festa.setHours(0,0,0,0);
   const d=Math.round((festa-hoje)/86400000);
-  if(d>1) el.textContent=`faltam ${d} dias ☀️`;
-  else if(d===1) el.textContent="é amanhã! ☀️";
-  else if(d===0) el.textContent="é hoje!!! 🎉";
+  if(d>1) el.textContent=`faltam ${d} dias`;
+  else if(d===1) el.textContent="é amanhã";
+  else if(d===0) el.textContent="é hoje";
 })();
-
-/* ====== pulinho no toque (celular) ====== */
-document.querySelectorAll(".dw img").forEach(img=>{
-  img.addEventListener("click",()=>{img.classList.remove("pulo");void img.offsetWidth;img.classList.add("pulo");});
-  img.addEventListener("animationend",e=>{if(e.animationName==="pulinho")img.classList.remove("pulo");});
-});
 
 /* ====== cachorro do "não" ====== */
 const palco=document.getElementById("palco");
 const balao=document.getElementById("balao");
 let timerPalco=null;
-function soltaFumaca(){
-  const f=document.getElementById("fumaca"); f.innerHTML="";
-  const cores=["#00843dcc","#ffcc29cc","#1f3fa8cc","#00b050aa","#ffe680aa"];
-  for(let i=0;i<22;i++){
-    const s=document.createElement("span");
-    const ang=Math.random()*Math.PI*2, r=80+Math.random()*120;
-    s.style.setProperty("--s",(60+Math.random()*90)+"px");
-    s.style.setProperty("--c",cores[i%cores.length]);
-    s.style.setProperty("--x",Math.cos(ang)*r+"px");
-    s.style.setProperty("--y",Math.sin(ang)*r-40+"px");
-    s.style.setProperty("--d",(Math.random()*.4)+"s");
-    f.appendChild(s);
-  }
-}
-function mostraDog(frase, fixo){
+function mostraDog(frase,fixo){
   balao.textContent=frase;
-  palco.classList.remove("ativo");void palco.offsetWidth;
-  soltaFumaca();
   palco.classList.add("ativo");
-  palco.classList.add("clicavel");
   clearTimeout(timerPalco);
   if(!fixo) timerPalco=setTimeout(escondeDog,5000);
 }
-function escondeDog(){palco.classList.remove("ativo","clicavel");clearTimeout(timerPalco);}
+function escondeDog(){palco.classList.remove("ativo");clearTimeout(timerPalco);}
 palco.addEventListener("click",escondeDog);
 
-/* ====== mergulho do sucesso ====== */
-function mergulho(){
-  const m=document.getElementById("mergulhadora");
-  m.classList.remove("vai");void m.offsetWidth;m.classList.add("vai");
-  const cores=["#ffffff","#7fd3ff","#ffcc29","#00b050"];
-  const inicio=performance.now();
-  (function rastro(){
-    const t=performance.now()-inicio;
-    if(t>2300) return splash();
-    const r=m.getBoundingClientRect();
-    for(let i=0;i<2;i++){
-      const b=document.createElement("span");
-      const s=6+Math.random()*12;
-      b.className="bolha";
-      b.style.cssText=`width:${s}px;height:${s}px;left:${r.left+r.width*.3+Math.random()*r.width*.4}px;top:${r.top+Math.random()*r.height*.5}px;background:${cores[(Math.random()*cores.length)|0]};box-shadow:0 0 6px #fff8`;
-      document.body.appendChild(b);
-      setTimeout(()=>b.remove(),1700);
-    }
-    requestAnimationFrame(rastro);
-  })();
+/* ====== carimbo na comanda ====== */
+function carimba(texto,cor){
+  const c=document.getElementById("carimbo");
+  c.textContent=texto;c.style.setProperty("--c",cor);
+  c.classList.remove("bate");void c.offsetWidth;c.classList.add("bate");
 }
-function splash(){
-  const sp=document.createElement("div");sp.className="splash";
-  sp.style.left="60vw";
-  for(let i=0;i<26;i++){
-    const g=document.createElement("i");
-    const ang=Math.PI+Math.random()*Math.PI, r=60+Math.random()*140;
-    g.style.setProperty("--x",Math.cos(ang)*r+"px");
-    g.style.setProperty("--y",Math.sin(ang)*r*1.4+"px");
-    g.style.background=["#7fd3ff","#ffffff","#3d9bff"][i%3];
-    sp.appendChild(g);
+
+/* ====== brinde ====== */
+function brinde(){
+  const b=document.getElementById("brinde");
+  const g=document.getElementById("gotas");g.innerHTML="";
+  for(let i=0;i<16;i++){
+    const s=document.createElement("span");s.className="gota";
+    const ang=-Math.PI*Math.random(), r=50+Math.random()*80;
+    s.style.setProperty("--x",Math.cos(ang)*r+"px");
+    s.style.setProperty("--y",Math.sin(ang)*r+"px");
+    const sz=4+Math.random()*8;s.style.width=s.style.height=sz+"px";
+    g.appendChild(s);
   }
-  document.body.appendChild(sp);
-  setTimeout(()=>sp.remove(),1400);
+  b.classList.remove("ativo");void b.offsetWidth;b.classList.add("ativo");
+  setTimeout(()=>b.classList.remove("ativo"),2600);
 }
 
 /* ====== formulário ====== */
@@ -540,7 +480,7 @@ function desenhaNomes(){
     d.className="campo";
     d.innerHTML=`<label for="ac${i}">Nome do acompanhante ${n>1?i+1:""}</label>
       <input id="ac${i}" class="nome-acomp" placeholder="Nome e sobrenome" autocomplete="off">
-      <div class="msg-erro">Coloca o nome desse acompanhante</div>`;
+      <div class="msg-erro">Coloque o nome desse acompanhante</div>`;
     boxNomes.appendChild(d);
     d.querySelector("input").value=atuais[i]||"";
   }
@@ -557,7 +497,6 @@ tel.addEventListener("input",()=>{
 });
 
 function marca(id,ok){document.getElementById(id).classList.toggle("erro",!ok);return ok;}
-
 function valida(){
   let ok=true;
   ok=marca("c-presenca",!!presenca)&&ok;
@@ -613,8 +552,8 @@ form.addEventListener("submit",async e=>{
     }
     mostraSucesso(dados);
   }catch(err){
-    btn.disabled=false; btn.textContent="Fechar a comanda 🍺";
-    alert("Não consegui enviar agora 😕 Confere sua internet e tenta de novo.");
+    btn.disabled=false; btn.textContent="Fechar a comanda";
+    alert("Não consegui enviar agora. Confira sua internet e tente de novo.");
   }
 });
 
@@ -623,33 +562,29 @@ function esc(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt
 function mostraSucesso(d){
   const primeiro=esc(d.nome.split(/\s+/)[0]);
   const area=document.getElementById("area-form");
-  const zap=CONFIG.WHATSAPP?`<a class="btn-link" target="_blank" rel="noopener" href="https://wa.me/${CONFIG.WHATSAPP}?text=${encodeURIComponent(`Oi! Respondi o convite da ${CONFIG.NOME_CURTO}: ${d.presenca==="Sim"?"vou! 🎉":"não vou poder 😢"} (${d.nome})`)}">Avisar no WhatsApp</a>`:"";
-  if(d.presenca==="Sim"){
-    document.body.classList.remove("noite"); escondeDog();
-    area.innerHTML=`<div class="sucesso">
-      <div class="big">🍻</div>
-      <h2>Presença confirmada! 🎉</h2>
-      <p>Que alegria, ${primeiro}! Te esperamos no dia <strong>21/11</strong> na Chácara Paraíso do Sol pra comemorar a ${CONFIG.NOME_CURTO}.</p>
-      <p class="lembrete">🤫 Lembra: é surpresa! Bico fechado até lá.</p>
-      ${zap}<br><a class="btn-link" href="#" onclick="location.reload();return false;">Responder de novo</a>
-    </div>`;
-    mergulho();
-  }else{
-    area.innerHTML=`<div class="sucesso">
-      <div class="big">💌</div>
-      <h2>Resposta enviada</h2>
-      <p>Obrigado por avisar, ${primeiro}. Vamos sentir sua falta!</p>
-      <p class="lembrete">🤫 E mesmo sem ir: não conta nada pra ${CONFIG.NOME_CURTO}!</p>
-      ${zap}<br><a class="btn-link" href="#" onclick="location.reload();return false;">Responder de novo</a>
-    </div>`;
-  }
+  const zap=CONFIG.WHATSAPP?`<a class="btn-link" target="_blank" rel="noopener" href="https://wa.me/${CONFIG.WHATSAPP}?text=${encodeURIComponent(`Oi! Respondi o convite da ${CONFIG.NOME_CURTO}: ${d.presenca==="Sim"?"vou!":"não vou poder."} (${d.nome})`)}">Avisar no WhatsApp</a><br>`:"";
+  const sim=d.presenca==="Sim";
+  if(sim){ document.body.classList.remove("noite"); escondeDog(); }
+  area.innerHTML=`<div class="sucesso">
+    <h2>${sim?"Presença confirmada":"Resposta enviada"}</h2>
+    <p>${sim
+      ?`Que bom, ${primeiro}! Te esperamos no sábado, <strong>21/11</strong>, na Chácara Paraíso do Sol.`
+      :`Obrigado por avisar, ${primeiro}. Vamos sentir sua falta.`}</p>
+    <p class="lembrete">Lembrete: é surpresa. Nem uma palavra pra ${CONFIG.NOME_CURTO}.</p>
+    ${zap}<a class="btn-link" href="#" onclick="location.reload();return false;">Responder de novo</a>
+  </div>`;
   document.getElementById("comanda").scrollIntoView({behavior:"smooth",block:"start"});
+  setTimeout(()=>{
+    if(sim){ carimba("Confirmado","#b8322a"); brinde(); }
+    else carimba("Fica pra próxima","#24438f");
+  },450);
 }
 
 /* ====== encerramento automático ====== */
 if(new Date()>=CONFIG.PRAZO_FIM){
   document.body.classList.add("encerrado","noite");
-  document.getElementById("titulo-form").textContent="As confirmações foram encerradas";
+  document.getElementById("titulo-form").textContent="Confirmações encerradas";
+  carimba("Fechada","#1f1b16");
   mostraDog(CONFIG.FRASE_ENCERRADO,true);
 }
 </script>

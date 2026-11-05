@@ -83,7 +83,7 @@ body{
 .mar .anim{will-change:transform,opacity}
 /* espuma da beira: sobe e desce na areia */
 .mar .swash{animation:swash 7s ease-in-out infinite}
-@keyframes swash{0%,100%{transform:translateX(0);opacity:.85}50%{transform:translateX(-11px);opacity:1}}
+@keyframes swash{0%,100%{transform:translateX(0)}50%{transform:translateX(-6px)}}
 /* ondas: nascem no fundo, andam até a beira e somem */
 .mar .crista{animation:chega 7s cubic-bezier(.4,0,.7,1) infinite;opacity:0}
 .mar .c2{animation-delay:-2.33s}
@@ -104,14 +104,15 @@ body{
 @keyframes pulsa{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
 
 /* ---------- gaivotas e ciclista ---------- */
-.gaivota{position:fixed;z-index:3;pointer-events:none;width:var(--t);left:var(--x);top:0;
+/* gaivotas: voam por trás do convite; a sombra (mesmo formato) cai na areia */
+.gaivota{position:fixed;z-index:0;pointer-events:none;left:0;top:var(--y);width:var(--t);
   animation:voa var(--dur) linear infinite;animation-delay:var(--delay)}
-.gaivota .asas{animation:bate .32s ease-in-out infinite alternate}
-.gaivota.plana .asas{animation-duration:1.4s}
-@keyframes bate{from{transform:scaleX(1)}to{transform:scaleX(.5)}}
+.gaivota img{display:block;width:100%;max-width:none;
+  filter:drop-shadow(34px 48px 0 rgba(90,65,25,.13));animation:plana 3.4s ease-in-out infinite alternate}
+@keyframes plana{from{transform:rotate(-4deg) scaleY(1)}to{transform:rotate(3deg) scaleY(.9)}}
 @keyframes voa{
-  from{transform:translate(0,110vh) rotate(var(--r))}
-  to{transform:translate(var(--dx),-20vh) rotate(var(--r))}
+  from{transform:translate(105vw,0)}
+  to{transform:translate(-40vw,-22vh)}
 }
 /* gente, bikes e carros vistos de cima (desenhados apontando pra cima) */
 .movel{position:fixed;z-index:1;pointer-events:none;top:0;filter:drop-shadow(3px 4px 1.5px rgba(0,0,0,.16));
@@ -406,7 +407,6 @@ body.encerrado .so-aberto{display:none!important}
 </head>
 <body>
 <div class="calcadao" aria-hidden="true"></div>
-<div class="mar" id="mar" aria-hidden="true"></div>
 <div class="sol-wrap" aria-hidden="true">
   <svg class="raios-svg" viewBox="-280 -280 560 560">
     <defs>
@@ -420,12 +420,14 @@ body.encerrado .so-aberto{display:none!important}
     </defs>
     <g id="raios"></g>
   </svg>
+</div>
+<div class="mar" id="mar" aria-hidden="true"></div>
+<div class="sol-wrap" aria-hidden="true">
   <div class="halo"></div>
   <svg viewBox="-280 -280 560 560"><circle r="66" fill="url(#gDisco)"/></svg>
 </div>
-<svg class="gaivota" style="--t:46px;--x:62%;--dx:-30vw;--r:-25deg;--dur:24s;--delay:-6s" viewBox="-30 -20 60 40" aria-hidden="true"><use href="#ave"/></svg>
-<svg class="gaivota plana" style="--t:34px;--x:78%;--dx:-45vw;--r:-35deg;--dur:31s;--delay:-19s" viewBox="-30 -20 60 40" aria-hidden="true"><use href="#ave"/></svg>
-<svg class="gaivota" style="--t:40px;--x:30%;--dx:20vw;--r:15deg;--dur:28s;--delay:-12s" viewBox="-30 -20 60 40" aria-hidden="true"><use href="#ave"/></svg>
+<div class="gaivota" style="--t:clamp(54px,14vw,110px);--y:38vh;--dur:26s;--delay:-4s" aria-hidden="true"><img src="img/gaivota.png" alt=""></div>
+<div class="gaivota" style="--t:clamp(40px,10vw,80px);--y:72vh;--dur:34s;--delay:-20s" aria-hidden="true"><img src="img/gaivota.png" alt=""></div>
 <div id="movimento" aria-hidden="true"></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -673,69 +675,48 @@ const SVGNS="http://www.w3.org/2000/svg";
 /* ====== mar ====== */
 function desenhaMar(){
   const box=document.getElementById("mar");
-  const w=box.clientWidth, W=w+40, h=Math.max(box.clientHeight,window.innerHeight,screen.height||0)+140;
-  const praia=y=>26+10*Math.sin(y/95)+5*Math.sin(y/37+1.3)+2.5*Math.sin(y/14+.4);
-  const linha=(dx,j=0,f=0)=>{let d="";for(let y=-10;y<=h+10;y+=5){const x=praia(y)+dx+j*Math.sin(y/(19+dx/9)+f);d+=(d?"L":"M")+x.toFixed(1)+" "+y}return d};
-  const costa=linha(0);
-  const fecha=`L${W} ${h+10} L${W} -10 Z`;
-  // cada camada vira uma imagem estática (o filtro é calculado uma vez só); a animação move só a imagem
-  const camada=(cls,inner,defs="")=>{
-    const s=`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${h}" viewBox="0 0 ${W} ${h}"><defs>${defs}</defs>${inner}</svg>`;
+  const w=box.clientWidth, W=w+30, h=Math.max(box.clientHeight,window.innerHeight,screen.height||0)+140;
+  // sorteio com semente fixa: o desenho sai igual toda vez
+  let semente=7;const rnd=()=>((semente=(semente*16807)%2147483647)/2147483647);
+  // borda macia e irregular (soma de ondas lentas)
+  const A=1+Math.max(0,w-120)/220;   // mar largo (PC) = ondulações maiores
+  const borda=(base,amp,s)=>y=>base+amp*A*(.62*Math.sin(y/(88*Math.sqrt(A))+s)+.28*Math.sin(y/41+2.1*s)+.1*Math.sin(y/19+3.3*s));
+  const caminho=f=>{let d="";for(let y=-10;y<=h+10;y+=6){d+=(d?"L":"M")+f(y).toFixed(1)+" "+y}return d};
+  const ate=f=>caminho(f)+`L${W} ${h+10} L${W} -10 Z`;
+  const entre=(fa,fb)=>{let d=caminho(fa);for(let y=h+10;y>=-10;y-=6){d+="L"+fb(y).toFixed(1)+" "+y}return d+"Z"};
+  // cada camada vira uma imagem estática; a animação move só a imagem
+  const camada=(cls,inner)=>{
+    const s=`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${h}" viewBox="0 0 ${W} ${h}">${inner}</svg>`;
     return `<img class="${cls}" alt="" width="${W}" height="${h}" src="data:image/svg+xml;charset=utf-8,${encodeURIComponent(s)}">`;
   };
-  const rasga=(id,seed,esc,freq)=>`<filter id="${id}" x="-30%" y="0" width="160%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="${freq}" numOctaves="2" seed="${seed}"/><feDisplacementMap in="SourceGraphic" scale="${esc}"/><feGaussianBlur stdDeviation=".5"/></filter>`;
 
-  /* fundo: areia molhada, água com degradê, raso transparente, manchas de profundidade e reflexos */
-  const defsBase=`
-    <linearGradient id="gMar" x1="0" x2="${w}" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#b9ebe0"/><stop offset=".08" stop-color="#7fd9d0"/><stop offset=".22" stop-color="#3dbcc6"/>
-      <stop offset=".45" stop-color="#1b9cbc"/><stop offset=".72" stop-color="#1279a6"/><stop offset="1" stop-color="#0c5687"/></linearGradient>
-    <linearGradient id="gRaso" x1="10" x2="85" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#e3c995" stop-opacity=".8"/><stop offset=".45" stop-color="#d9c08c" stop-opacity=".3"/><stop offset="1" stop-color="#d9c08c" stop-opacity="0"/></linearGradient>
-    <linearGradient id="gMolhada" x1="0" x2="44" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#d6bb86" stop-opacity="0"/><stop offset=".55" stop-color="#cdb07a" stop-opacity=".9"/><stop offset="1" stop-color="#bf9f68"/></linearGradient>
-    <linearGradient id="gMascRaso" x1="0" x2="120" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
-    <mask id="mRaso"><rect width="100%" height="100%" fill="url(#gMascRaso)"/></mask>
-    <clipPath id="cAgua"><path d="${costa}${fecha}"/></clipPath>
-    <filter id="fFundo" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.009 0.0035" numOctaves="3" seed="3"/><feColorMatrix values="0 0 0 0 .02  0 0 0 0 .2  0 0 0 0 .36  0 0 0 1.7 -.75"/></filter>
-    <filter id="fCaust" x="0" y="0" width="100%" height="100%"><feTurbulence type="turbulence" baseFrequency="0.045 0.03" numOctaves="2" seed="9"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -4 1"/></filter>
-    <filter id="fSuave" x="-30%" y="0" width="160%" height="100%"><feGaussianBlur stdDeviation="6"/></filter>`;
-  const base=`
-    <path d="${linha(-20)}${fecha}" fill="url(#gMolhada)"/>
-    <path d="${linha(-20)}" fill="none" stroke="rgba(150,118,70,.35)" stroke-width="1.5"/>
-    <path d="${costa}${fecha}" fill="url(#gMar)"/>
-    <g clip-path="url(#cAgua)">
-      <rect width="100%" height="100%" fill="url(#gRaso)"/>
-      <rect width="100%" height="100%" filter="url(#fFundo)" opacity=".28"/>
-      <rect width="100%" height="100%" filter="url(#fCaust)" mask="url(#mRaso)" opacity=".16"/>
-      <path d="${linha(16)}" fill="none" stroke="#0b6f86" stroke-width="16" opacity=".16" filter="url(#fSuave)"/>
-    </g>`;
+  const praia=borda(26,9,.4);
+  const k=Math.max(w,90);
+  /* faixas de água do raso (claro) ao fundo (escuro), estilo ilustração lisa */
+  const faixas=[
+    [praia,"#c9dbd2"],
+    [borda(26+k*.15,10,1.7),"#a2d3cd"],
+    [borda(26+k*.31,11,2.9),"#82c4c5"],
+    [borda(26+k*.5,12,4.1),"#6bb4b8"],
+    [borda(26+k*.72,13,5.6),"#5aa3a9"]
+  ];
+  /* areia molhada: faixa e manchas mais escuras atrás da espuma */
+  let fundo=`<path d="${ate(y=>praia(y)-12+3*Math.sin(y/23))}" fill="#ebd2a2"/>`;
+  for(let y=20;y<h;y+=60+rnd()*90){
+    const ry=10+rnd()*22, cx=praia(y)-16-rnd()*14;
+    fundo+=`<ellipse cx="${cx.toFixed(1)}" cy="${y.toFixed(0)}" rx="${(3.5+rnd()*4).toFixed(1)}" ry="${ry.toFixed(1)}" fill="#dfc28c"/>`;
+  }
+  faixas.forEach(([f,cor])=>{fundo+=`<path d="${ate(f)}" fill="${cor}"/>`;});
 
-  /* espuma rendada da beira */
-  const defsSwash=`
-    <filter id="fRenda" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.09 0.04" numOctaves="2" seed="5"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 3 -1.25"/><feGaussianBlur stdDeviation=".6"/></filter>
-    <filter id="fBorra" x="-20%" y="0" width="140%" height="100%"><feGaussianBlur stdDeviation="5"/></filter>
-    <mask id="mFaixa"><path d="${linha(9)}" fill="none" stroke="#fff" stroke-width="26" filter="url(#fBorra)"/></mask>
-    ${rasga("fBeira",2,4,"0.06 0.02")}`;
-  const swash=`
-    <path d="${linha(4)}" fill="none" stroke="#fff" stroke-width="10" opacity=".35" filter="url(#fBeira)"/>
-    <rect width="100%" height="100%" filter="url(#fRenda)" mask="url(#mFaixa)"/>
-    <path d="${costa}" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" filter="url(#fBeira)"/>`;
+  /* espuma: faixa branca com bolinhas do lado da água */
+  const espFim=y=>praia(y)+6+5*(.5+.5*Math.sin(y/29+1));
+  let espuma=`<path d="${entre(y=>praia(y)-3,espFim)}" fill="#fffdf8"/>`;
+  for(let i=0;i<h/9;i++){
+    const y=rnd()*h, x=espFim(y)+2+rnd()*16, r=.7+rnd()*1.8;
+    espuma+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(0)}" r="${r.toFixed(1)}" fill="#fffdf8" opacity="${(.6+rnd()*.4).toFixed(2)}"/>`;
+  }
 
-  /* ondas quebrando (linhas brancas interrompidas) */
-  // onda vista de cima: faixa larga e macia de água branca, com a borda da frente um pouco mais definida
-  const suave=(dx,f)=>{let d="";for(let y=-10;y<=h+10;y+=8){const x=26+10*Math.sin(y/95)+5*Math.sin(y/37+1.3)+dx+2*Math.sin(y/140+f);d+=(d?"L":"M")+x.toFixed(1)+" "+y}return d};
-  const crista=(n,dx,seed)=>camada(`anim crista c${n}`,
-    `<path d="${suave(dx+5,seed)}" fill="none" stroke="#ffffff" stroke-width="12" opacity=".22" filter="url(#fS${n})"/>
-     <path d="${suave(dx,seed)}" fill="none" stroke="#ffffff" stroke-width="3" opacity=".55" filter="url(#fc${n})"/>`,
-    `<filter id="fc${n}" x="-30%" y="0" width="160%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.03 0.012" numOctaves="2" seed="${seed}"/><feDisplacementMap in="SourceGraphic" scale="3"/><feGaussianBlur stdDeviation="1.1"/></filter>
-     <filter id="fS${n}" x="-30%" y="0" width="160%" height="100%"><feGaussianBlur stdDeviation="5"/></filter>`);
-
-  box.innerHTML=
-    camada("fundo",base,defsBase)+
-    crista(1,30,3)+crista(2,30,7)+crista(3,30,12)+
-    camada("anim swash",swash,defsSwash);
-  const b=document.createElement("div");b.className="brilhos";
-  for(let i=0;i<5;i++){const s=document.createElement("i");s.style.left=(40+Math.random()*55)+"%";s.style.top=(Math.random()*100)+"%";s.style.animationDelay=(Math.random()*3.2)+"s";b.appendChild(s);}
-  box.appendChild(b);
+  box.innerHTML=camada("fundo",fundo)+camada("anim swash",espuma);
 }
 desenhaMar();
 let tMar;addEventListener("resize",()=>{clearTimeout(tMar);tMar=setTimeout(desenhaMar,200)});

@@ -131,7 +131,7 @@ body{
 .areia-deco .chinelo{width:30px;height:34px}
 body{position:relative}
 @media (min-width:1440px){.areia-deco{display:block}}
-.areia-deco .gs-cima{width:clamp(100px,calc((50vw - 430px) * .45),150px);height:auto;aspect-ratio:1}
+.areia-deco .gs-cima{width:clamp(90px,calc((50vw - var(--meia) - 150px) * .45),150px);height:auto;aspect-ratio:1}
 
 /* gente, bikes e carros vistos de cima (desenhados apontando pra cima) */
 .movel{position:fixed;z-index:1;pointer-events:none;top:0;filter:drop-shadow(3px 4px 1.5px rgba(0,0,0,.16));
@@ -238,9 +238,14 @@ h1.nome .vitoria{
 .cardapio h2{
   position:relative;margin:-58px auto 14px;width:max-content;max-width:100%;
   font-family:var(--chunky);font-weight:400;font-size:2.3rem;letter-spacing:.02em;color:var(--vermelho);
-  transform:skewX(-8deg);text-shadow:2px 2px 0 rgba(255,255,255,.7);padding:18px 34px;
+  transform:skewX(-8deg);padding:18px 38px;
+  -webkit-text-stroke:2px var(--azul-escuro);paint-order:stroke fill;
+  text-shadow:3px 3px 0 var(--azul-escuro);
 }
-.cardapio h2::before{content:"";position:absolute;inset:4px 0;background:#fff36b;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);z-index:-1;transform:skewX(8deg)}
+/* bandeirinha amarela com contorno azul-escuro (losango por trás de outro losango) */
+.cardapio h2::before,.cardapio h2::after{content:"";position:absolute;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);transform:skewX(8deg)}
+.cardapio h2::after{inset:0 -6px;background:var(--azul-escuro);z-index:-2}
+.cardapio h2::before{inset:4px 0;background:#fff36b;z-index:-1}
 .linhas{list-style:none;margin:0;padding:0}
 .linhas li{
   display:flex;align-items:baseline;gap:8px;padding:9px 0 7px;
@@ -401,7 +406,7 @@ body.encerrado .so-aberto{display:none!important}
   .shh strong{font-size:1.3rem}
   .shh p{font-size:.84rem}
   .cardapio{padding:24px 14px 16px}
-  .cardapio h2{font-size:1.9rem}
+  .cardapio h2{font-size:1.9rem;-webkit-text-stroke:1.2px var(--azul-escuro);text-shadow:2px 2px 0 var(--azul-escuro)}
   .linhas li{font-size:1.12rem;gap:6px}
   .linhas li::before{width:11px;height:11px}
   .endereco{font-size:.8rem}
@@ -421,6 +426,72 @@ body.encerrado .so-aberto{display:none!important}
   .selo-contagem{width:92px;height:92px;right:-10px}
   .selo-contagem strong{font-size:2.2rem}
 }
+/* ================= COMPUTADOR =================
+   Convite grande em duas colunas: topo ocupando tudo; à esquerda surpresa + rolê + ingresso,
+   à direita a comanda. O mar fica um pouco mais estreito para sobrar areia. */
+:root{--meia:280px}
+@media (min-width:1360px){
+  :root{--w-mar:max(200px,calc((100vw - 1140px) / 2));--meia:500px}
+  main{
+    max-width:min(1000px,calc(100vw - 2 * var(--w-mar) - 40px));
+    padding-left:16px;padding-right:16px;padding-block:56px 72px;
+    display:grid;grid-template-columns:1fr 1fr;column-gap:56px;align-items:start;
+  }
+  .hero{grid-column:1 / -1;padding-top:10px}
+  .shh{grid-column:1;grid-row:2;margin-top:36px}
+  .cardapio{grid-column:1;grid-row:3;margin-top:64px}
+  .ingresso{grid-column:1;grid-row:4;margin-top:28px}
+  .comanda-wrap{grid-column:2;grid-row:2 / span 3;margin-top:36px}
+  .assinatura{grid-column:1 / -1;grid-row:5;margin-top:64px}
+  .rodape{grid-column:1 / -1;grid-row:6}
+
+  .eyebrow{font-size:1.9rem;letter-spacing:.16em}
+  h1.nome .maria{font-size:9rem;-webkit-text-stroke:3px var(--azul-escuro);text-shadow:7px 7px 0 var(--azul-escuro)}
+  h1.nome .vitoria{font-size:8rem;text-shadow:3px 3px 0 rgba(246,196,69,.9)}
+  .risco{max-width:400px;height:22px;margin-top:-2px}
+  .idade{font-size:2.6rem;margin-top:22px}
+  .lede{font-size:1.3rem;max-width:560px;margin-top:14px}
+  .cena{height:380px;max-width:560px;margin-top:20px}
+  .cena .gs{height:350px}
+  .cena .cad{height:185px}
+  .cena .copo{height:84px}
+  .selo-contagem{width:160px;height:160px;top:80px;right:-20px}
+  .selo-contagem small{font-size:1.35rem}
+  .selo-contagem strong{font-size:4.2rem}
+  .brilho-estrela{transform:scale(1.6)}
+
+  .shh{padding:30px 26px 24px}
+  .shh .tag{font-size:1.4rem}
+  .shh strong{font-size:2.1rem}
+  .shh p{font-size:1.1rem}
+  .cardapio{padding:34px 26px 26px}
+  .cardapio h2{font-size:3.2rem;margin-top:-76px;padding:22px 48px}
+  .linhas li{font-size:2rem;padding:12px 0 10px}
+  .linhas li::before{width:18px;height:18px}
+  .ingresso{padding:26px 24px}
+  .ingresso h3{font-size:2.1rem}
+  .ingresso p{font-size:1.1rem}
+  .btn-ingresso{font-size:1.55rem;padding:14px 26px}
+  .ingresso small{font-size:.9rem}
+
+  .comanda{padding:40px 32px 40px;background-position:0 64px}
+  .cabecalho{font-size:1.35rem}
+  .anota{font-size:1.9rem;line-height:40px}
+  .comanda h2{font-size:2.5rem}
+  .prazo{font-size:1.35rem}
+  .escolha button{font-size:1.6rem;padding:16px 8px}
+  .campo label{font-size:1.05rem}
+  .campo input{font-size:18px;padding:15px 16px}
+  .enviar{font-size:1.9rem;padding:16px}
+  .nota{font-size:.9rem}
+  .carimbo{font-size:2rem;top:120px}
+  .assinatura{font-size:3.6rem}
+  .rodape{font-size:1rem}
+}
+@media (min-width:1360px) and (max-width:1699px){
+  .areia-deco{display:none}
+}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01s!important;animation-iteration-count:1!important;transition:none!important}
 }
@@ -696,7 +767,7 @@ const SVGNS="http://www.w3.org/2000/svg";
 /* ====== guarda-sóis e cangas na areia (só PC) ====== */
 (function(){
   const box=document.getElementById("areiaDeco");
-  const vao="(50vw - 280px - var(--w-calcada))";           // areia livre entre o calçadão e o convite
+  const vao="(50vw - var(--meia) - var(--w-calcada))";     // areia livre entre o calçadão e o convite
   const x=f=>`calc(var(--w-calcada) + ${vao} * ${f})`;
   // guarda-sol octogonal visto de cima: faixas concêntricas + gomos
   const guardaSol=(cores,giro=0)=>{

@@ -45,9 +45,7 @@
 /* tela grande: a orla inteira vista de cima, com a faixa de areia (e o convite) no centro */
 @media (min-width:960px){
   :root{--w-calcada:calc((100vw - 760px) / 2);--w-mar:calc((100vw - 760px) / 2)}
-}
-@media (min-width:1280px){
-  :root{--w-ondas:clamp(90px,calc(var(--w-calcada) * .42),170px)}
+  .calcadao{background-size:110px 220px !important}
 }
 *{box-sizing:border-box}
 html,body{margin:0}
@@ -146,11 +144,6 @@ body{
   background-size:2px 34px;background-position:50% 0;background-repeat:repeat-y;
   box-shadow:inset 2px 0 0 rgba(255,255,255,.8),inset -2px 0 0 rgba(255,255,255,.8);
 }
-@media (min-width:1280px){
-  .avenida,.ciclovia{display:block}
-  .movel.d{display:block}
-  .movel.m{display:none}
-}
 
 /* ---------- conteúdo ---------- */
 main{
@@ -234,7 +227,9 @@ h1.nome .vitoria{
   font-family:var(--placa);font-weight:700;font-size:1.45rem;text-transform:uppercase;color:var(--vermelho);
   text-shadow:1.5px 1.5px 0 rgba(246,196,69,.7);line-height:1;
 }
-.linhas li::before{content:"✳";color:var(--verde);text-shadow:none;font-size:1.2rem;font-family:var(--texto)}
+/* asterisco desenhado (o caractere vira emoji no iPhone) */
+.linhas li::before{content:"";flex:none;width:14px;height:14px;align-self:center;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-10 -10 20 20'%3E%3Cg stroke='%232fae5a' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M0-8V8M-8 0H8M-5.6-5.6 5.6 5.6M-5.6 5.6 5.6-5.6'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat}
 .linhas li span{flex:1;min-width:0}
 .linhas li em{font-style:normal;white-space:nowrap}
 .endereco{margin:14px 0 0;text-align:center;font-size:.9rem;line-height:1.5;color:var(--cinza)}
@@ -342,7 +337,7 @@ h1.nome .vitoria{
 .pegadas span{width:9px;height:15px;border-radius:50%;background:rgba(150,110,50,.22)}
 .pegadas span:nth-child(odd){transform:translateX(-9px) rotate(-8deg)}
 .pegadas span:nth-child(even){transform:translateX(9px) rotate(8deg)}
-.assinatura{text-align:center;font-family:var(--script);font-size:2.4rem;margin:14px 0 0;color:var(--vermelho);transform:rotate(-4deg)}
+.assinatura{text-align:center;font-family:var(--script);font-size:2.4rem;margin:44px 0 0;color:var(--vermelho);transform:rotate(-4deg)}
 
 /* brinde */
 .brinde{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .4s}
@@ -406,8 +401,6 @@ body.encerrado .so-aberto{display:none!important}
 <svg class="gaivota" style="--t:46px;--x:62%;--dx:-30vw;--r:-25deg;--dur:24s;--delay:-6s" viewBox="-30 -20 60 40" aria-hidden="true"><use href="#ave"/></svg>
 <svg class="gaivota plana" style="--t:34px;--x:78%;--dx:-45vw;--r:-35deg;--dur:31s;--delay:-19s" viewBox="-30 -20 60 40" aria-hidden="true"><use href="#ave"/></svg>
 <svg class="gaivota" style="--t:40px;--x:30%;--dx:20vw;--r:15deg;--dur:28s;--delay:-12s" viewBox="-30 -20 60 40" aria-hidden="true"><use href="#ave"/></svg>
-<div class="avenida" aria-hidden="true"></div>
-<div class="ciclovia" aria-hidden="true"></div>
 <div id="movimento" aria-hidden="true"></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -465,7 +458,6 @@ body.encerrado .so-aberto{display:none!important}
     </h1>
     <svg class="risco" viewBox="0 0 240 14" aria-hidden="true"><path d="M4 9 C60 2 120 2 236 7" fill="none" stroke="#e0362c" stroke-width="4" stroke-linecap="round"/></svg>
     <div class="idade">faz <b>28</b> anos</div>
-    <p class="lede">Um sábado de sol, chinelo, piscina e copo americano pra comemorar a Mavi.</p>
     <div class="cena">
       <div class="sombra-gs"></div>
       <img class="gs" src="img/guarda-sol.png" alt="">
@@ -478,26 +470,23 @@ body.encerrado .so-aberto{display:none!important}
   <section class="shh" role="note">
     <span class="tag">SHHH!</span>
     <strong>Ela não sabe de nada.</strong>
-    <p>Nada de comentar, dar indireta ou postar antes da hora. Bico fechado até o dia 21.</p>
+    <p>Bico fechado até o dia 21.</p>
   </section>
 
   <section class="cardapio">
     <h2>O ROLÊ</h2>
     <ul class="linhas">
-      <li><span>Quando</span><em>Sáb, 21/11</em></li>
-      <li><span>Horário</span><em>9h às 18h</em></li>
-      <li><span>Onde</span><em>Paraíso do Sol</em></li>
-      <li><span>Day use</span><em>R$ 50,00</em></li>
+      <li><span>Sábado</span><em>21/11</em></li>
+      <li><span>Das</span><em>9h às 18h</em></li>
     </ul>
-    <p class="endereco">Chácara Paraíso do Sol · Estr. do Galarda, 818<br>Jd. Santa Nely · Campo Largo/PR<br>
-      <a href="https://maps.google.com/?q=Ch%C3%A1cara+Para%C3%ADso+do+Sol+Estrada+do+Galarda+818+Campo+Largo" target="_blank" rel="noopener">Abrir no mapa</a> · <a href="https://www.instagram.com/chacara.paraisodosol/" target="_blank" rel="noopener">Instagram</a></p>
+    <p class="endereco">Chácara Paraíso do Sol · Campo Largo/PR<br>
+      <a href="https://maps.google.com/?q=Ch%C3%A1cara+Para%C3%ADso+do+Sol+Estrada+do+Galarda+818+Campo+Largo" target="_blank" rel="noopener">Ver no mapa</a></p>
   </section>
 
   <section class="ingresso">
-    <h3>Garanta seu ingresso</h3>
-    <p>O day use não está incluso. Cada convidado compra o seu direto no site da chácara, escolhendo o dia <strong>21/11</strong>.</p>
-    <a class="btn-ingresso" href="https://chacaraparaisodosol.com.br/loja/" target="_blank" rel="noopener">Comprar no site da chácara</a>
-    <small>Valor consultado em 05/11: R$ 50 por pessoa. Pode mudar até o dia.</small>
+    <h3>Ingresso à parte</h3>
+    <p>Cada um compra o seu day use (R$ 50) no site da chácara, para o dia <strong>21/11</strong>.</p>
+    <a class="btn-ingresso" href="https://chacaraparaisodosol.com.br/loja/" target="_blank" rel="noopener">Comprar ingresso</a>
   </section>
 
   <div class="comanda-wrap" id="comanda">
@@ -526,13 +515,11 @@ body.encerrado .so-aberto{display:none!important}
 
           <button type="submit" class="enviar" id="btn-enviar">Fechar a comanda</button>
           <p class="falha" id="falha" hidden>Não consegui enviar agora. Confira sua internet e tente de novo.</p>
-          <p class="nota">Seu nome é usado só para a organização da festa.</p>
         </form>
       </div>
     </section>
   </div>
 
-  <div class="pegadas" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
   <p class="assinatura">Te esperamos lá!</p>
 </main>
 
@@ -632,17 +619,9 @@ const SVGNS="http://www.w3.org/2000/svg";
   const carros=["#e0362c","#f4f4f4","#1f4fb4","#222","#f6c445","#9aa3ab"];
   const r=a=>a[Math.floor(Math.random()*a.length)];
   const lista=[
-    // celular: tudo no calçadão
-    ["bike","m",noCalc(.3),"sobe",17,-3],["bike","m",noCalc(.68),"desce",21,-12],
-    ["pessoa","m",noCalc(.5),"sobe",36,-9],["pessoa","m",noCalc(.25),"desce",42,-27],["pessoa","m",noCalc(.75),"sobe",48,-38],
-    // tela grande: ciclovia (mão dupla)
-    ["bike","d",ciclo(2),"sobe",14,-2],["bike","d",ciclo(2),"sobe",17,-10],["bike","d",ciclo(20),"desce",15,-6],["bike","d",ciclo(20),"desce",19,-15],
-    // tela grande: pessoas no calçadão
-    ["pessoa","d",noCalc(.2),"sobe",38,-5],["pessoa","d",noCalc(.45),"desce",44,-20],["pessoa","d",noCalc(.7),"sobe",33,-14],
-    ["pessoa","d",noCalc(.85),"desce",40,-31],["pessoa","d",noCalc(.35),"sobe",52,-40],["pessoa","d",noCalc(.6),"desce",47,-3],
-    // tela grande: carros na avenida
-    ["carro","d",pista(.14),"desce",7,-1],["carro","d",pista(.36),"desce",9,-5],["carro","d",pista(.14),"desce",8,-4.5],
-    ["carro","d",pista(.64),"sobe",8,-2],["carro","d",pista(.86),"sobe",10,-7],["carro","d",pista(.64),"sobe",9,-6]
+    // só o calçadão: uma ciclista e duas pessoas caminhando
+    ["bike","m",noCalc(.32),"sobe",18,-3],
+    ["pessoa","m",noCalc(.62),"desce",40,-14],["pessoa","m",noCalc(.4),"sobe",46,-33]
   ];
   const tam={bike:[20,48,"-10 -24 20 48"],pessoa:[20,20,"-10 -10 20 20"],carro:[30,60,"-12 -24 24 48"]};
   const box=document.getElementById("movimento");

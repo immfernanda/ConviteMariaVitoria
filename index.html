@@ -3,120 +3,166 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Aniversário surpresa da Maria Vitória</title>
+<title>Aniversário da Mavi</title>
+<meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Sábado, 21/11, na Chácara Paraíso do Sol. É surpresa: não conte pra Mavi! Confirme sua presença.">
 <meta property="og:title" content="Aniversário surpresa · Maria Vitória, 28">
 <meta property="og:description" content="Sábado, 21/11, na Chácara Paraíso do Sol. Shhh, é surpresa. Confirme sua presença aqui.">
 <meta property="og:image" content="https://immfernanda.github.io/ConviteMariaVitoria/img/og.jpg">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#123d2f">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍺</text></svg>">
+<meta name="theme-color" content="#f4e4c1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☀️</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Caveat:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Caveat:wght@500;700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+/* Praia vista de cima: calçadão (esquerda) | areia com o convite (meio) | mar (direita) */
 :root{
-  --verde:#123d2f;
-  --verde-fundo:#0e3226;
-  --verde-claro:#1d5a45;
-  --mostarda:#e0a526;
-  --creme:#f6efe1;
-  --papel:#fbf7ee;
-  --tijolo:#b8322a;
-  --azul:#24438f;
+  color-scheme:light;
+  --areia:#f4e4c1;
+  --areia-molhada:#dcc394;
+  --marinho:#14365d;
+  --coral:#d9532c;
+  --sol:#f2b632;
+  --papel:#fffaf0;
   --tinta:#1f1b16;
-  --cinza:#7a6f61;
-  --noite:#08140f;
+  --cinza:#7a6a55;
+  --pedra-clara:#f7f3ea;
+  --pedra-escura:#1d1d1d;
+  --tinta-caneta:#2b3a8a;
+  --verde:#1b6b4a;
+  --sombra:rgba(60,40,10,.18);
+  --veu:rgba(20,30,50,.55);
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --texto:"Outfit",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mao:"Caveat","Comic Sans MS",cursive;
+  --w-calcada:clamp(26px,13vw,150px);
+  --w-mar:clamp(52px,20vw,260px);
 }
 *{box-sizing:border-box}
 html,body{margin:0}
 body{
-  font-family:"Inter",system-ui,sans-serif;
-  color:var(--creme);
-  background-color:var(--verde-fundo);
-  min-height:100vh;
-  overflow-x:hidden;
+  font-family:var(--texto);color:var(--tinta);min-height:100vh;overflow-x:hidden;
+  background-color:var(--areia);
+  /* granulado da areia */
+  background-image:
+    radial-gradient(rgba(150,110,50,.10) 1px,transparent 1.2px),
+    radial-gradient(rgba(255,255,255,.35) 1px,transparent 1.2px);
+  background-size:7px 7px,11px 11px;
+  background-position:0 0,3px 5px;
   -webkit-font-smoothing:antialiased;
-  transition:background-color .9s ease;
 }
-body.noite{background-color:var(--noite)}
-/* calçadão de Copacabana, tom sobre tom */
+
+/* calçadão de Ipanema/Copacabana: ondas pretas e brancas verticais */
 .calcadao{
-  position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='72' viewBox='0 0 180 72'%3E%3Cpath d='M0 36 C45 0 45 0 90 36 S135 72 180 36 V72 H0Z' fill='%23f6efe1' fill-opacity='.035'/%3E%3C/svg%3E");
-  background-size:180px 72px;
+  position:fixed;top:0;bottom:0;left:0;width:var(--w-calcada);z-index:0;pointer-events:none;
+  background-color:var(--pedra-clara);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='120' viewBox='0 0 44 120'%3E%3Cpath d='M22 0 C38 20 38 40 22 60 S6 100 22 120' fill='none' stroke='%231d1d1d' stroke-width='13'/%3E%3C/svg%3E");
+  background-size:44px 120px;
+  box-shadow:3px 0 0 #cfc6b4,6px 0 10px rgba(0,0,0,.12);
 }
 
-/* cordão de lâmpadas */
-.cordao{position:relative;height:64px;margin:0 -16px;pointer-events:none}
-.cordao svg{position:absolute;inset:0;width:100%;height:100%}
-.lampadas{position:absolute;inset:0;display:flex;justify-content:space-around;padding:0 14px}
-.lampada{
-  width:9px;height:12px;border-radius:50% 50% 45% 45%;margin-top:var(--y);
-  background:#ffd98a;box-shadow:0 0 12px 3px rgba(255,200,110,.45);
-  animation:brilho 3.5s ease-in-out infinite;animation-delay:var(--d);position:relative;
+/* mar */
+.mar{
+  position:fixed;top:0;bottom:0;right:0;width:var(--w-mar);z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='200' viewBox='0 0 120 200' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%2392e0d6'/%3E%3Cstop offset='.4' stop-color='%2335adbd'/%3E%3Cstop offset='1' stop-color='%23176c97'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M18 0 C-2 33 38 67 18 100 C-2 133 38 167 18 200 H120 V0Z' fill='%23dcc394'/%3E%3Cpath d='M28 0 C8 33 48 67 28 100 C8 133 48 167 28 200 H120 V0Z' fill='url(%23g)'/%3E%3C/svg%3E");
+  background-size:100% 220px;
 }
-.lampada::before{content:"";position:absolute;top:-4px;left:2px;width:5px;height:5px;background:#2a2a2a;border-radius:1px}
-@keyframes brilho{0%,100%{opacity:1}50%{opacity:.7}}
+.mar::before,.mar::after{
+  content:"";position:absolute;inset:0;
+  background-size:100% 220px;
+  animation:onda 9s ease-in-out infinite alternate;
+}
+.mar::before{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='200' viewBox='0 0 120 200' preserveAspectRatio='none'%3E%3Cpath d='M28 0 C8 33 48 67 28 100 C8 133 48 167 28 200' fill='none' stroke='%23ffffff' stroke-width='5' stroke-linecap='round' opacity='.95'/%3E%3C/svg%3E");
+}
+.mar::after{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='200' viewBox='0 0 120 200' preserveAspectRatio='none'%3E%3Cpath d='M44 0 C24 33 64 67 44 100 C24 133 64 167 44 200' fill='none' stroke='%23ffffff' stroke-width='2.5' opacity='.5'/%3E%3Cpath d='M64 0 C44 33 84 67 64 100 C44 133 84 167 64 200' fill='none' stroke='%23ffffff' stroke-width='1.5' opacity='.3'/%3E%3C/svg%3E");
+  animation-duration:6s;animation-direction:alternate-reverse;
+}
+@keyframes onda{from{transform:translateX(0)}to{transform:translateX(-7px)}}
 
-main{max-width:540px;margin:0 auto;padding:0 20px 48px;position:relative}
+/* sol e raios */
+.raios{
+  position:fixed;z-index:0;pointer-events:none;
+  width:1100px;height:1100px;top:-550px;right:calc(var(--w-mar) - 550px);
+  background:repeating-conic-gradient(from 0deg,rgba(255,205,90,.22) 0deg 5deg,transparent 5deg 15deg);
+  -webkit-mask-image:radial-gradient(circle,#000 0,#000 18%,transparent 60%);
+          mask-image:radial-gradient(circle,#000 0,#000 18%,transparent 60%);
+  animation:gira 140s linear infinite;
+}
+.sol{
+  position:fixed;z-index:0;pointer-events:none;width:170px;height:170px;border-radius:50%;
+  top:-85px;right:calc(var(--w-mar) - 85px);
+  background:radial-gradient(circle,#fff3c4 0 35%,#ffd76a 60%,rgba(255,215,106,0) 72%);
+}
+@keyframes gira{to{transform:rotate(360deg)}}
+
+main{
+  position:relative;z-index:1;
+  max-width:560px;margin:0 auto;
+  padding-block:40px 56px;
+  padding-left:max(calc(var(--w-calcada) + 14px),16px,env(safe-area-inset-left,0px));
+  padding-right:max(calc(var(--w-mar) * .55),16px,env(safe-area-inset-right,0px));
+}
+@media (min-width:900px){
+  main{padding-left:16px;padding-right:16px}
+}
 
 /* topo */
-.hero{text-align:center;padding-top:18px}
-.eyebrow{
-  font-size:.72rem;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--mostarda);
-}
+.hero{text-align:center;padding-top:30px}
+.eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--coral)}
 h1.nome{
-  font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:400;
-  font-variation-settings:"opsz" 144;
-  font-size:clamp(3.2rem,15vw,5.4rem);line-height:.92;letter-spacing:-.02em;
-  margin:.32em 0 .18em;color:var(--creme);
+  font-family:var(--display);font-style:italic;font-weight:400;font-variation-settings:"opsz" 144;
+  font-size:clamp(3rem,14vw,5.4rem);line-height:.92;letter-spacing:-.02em;
+  margin:.3em 0 .16em;color:var(--marinho);text-wrap:balance;
 }
 .idade{
-  display:flex;align-items:center;justify-content:center;gap:14px;
-  font-family:"Fraunces",Georgia,serif;font-size:1.15rem;color:var(--mostarda);letter-spacing:.04em;
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  font-family:var(--display);font-size:1.15rem;color:var(--coral);
 }
-.idade::before,.idade::after{content:"";height:1px;width:44px;background:currentColor;opacity:.6}
-.lede{max-width:360px;margin:18px auto 0;font-size:1.02rem;line-height:1.55;color:#d9d0bf}
+.idade::before,.idade::after{content:"";height:1px;width:38px;background:currentColor;opacity:.6}
+.lede{max-width:340px;margin:16px auto 0;font-size:1.02rem;line-height:1.55;color:#4a3d2c}
 
-/* natureza-morta do boteco */
-.cena{position:relative;height:230px;max-width:340px;margin:22px auto 0}
-.cena img{position:absolute;bottom:14px;filter:drop-shadow(0 10px 12px rgba(0,0,0,.35))}
-.cena .gs{height:220px;left:50%;transform:translateX(-62%)}
-.cena .cad{height:118px;left:50%;transform:translateX(-8%)}
-.cena .copo{height:54px;left:50%;transform:translateX(-118%)}
-.cena .chao{position:absolute;left:8%;right:8%;bottom:12px;height:1px;background:linear-gradient(90deg,transparent,rgba(246,239,225,.5),transparent)}
+/* guarda-sol fincado na areia */
+.cena{position:relative;height:220px;max-width:320px;margin:16px auto 0}
+.cena img{position:absolute;bottom:16px;filter:drop-shadow(8px 10px 6px var(--sombra))}
+.cena .gs{height:210px;left:50%;transform:translateX(-62%)}
+.cena .cad{height:112px;left:50%;transform:translateX(-6%)}
+.cena .copo{height:52px;left:50%;transform:translateX(-122%)}
+.cena .sombra-gs{position:absolute;left:18%;right:18%;bottom:8px;height:22px;border-radius:50%;background:radial-gradient(closest-side,rgba(110,80,30,.28),transparent)}
 
 /* surpresa */
 .shh{
-  margin:30px auto 0;border:1px solid rgba(224,165,38,.55);border-radius:2px;
-  padding:20px 22px;text-align:center;position:relative;
+  margin:26px auto 0;background:rgba(255,250,240,.78);border:1px solid rgba(217,83,44,.45);
+  border-radius:3px;padding:22px 20px 18px;text-align:center;position:relative;
 }
-.shh::before{
-  content:"SHHH";position:absolute;top:-9px;left:50%;transform:translateX(-50%);
-  background:var(--verde-fundo);padding:0 12px;font-size:.7rem;letter-spacing:.4em;color:var(--mostarda);font-weight:600;
-  transition:background-color .9s;
+.shh .tag{
+  position:absolute;top:-11px;left:50%;transform:translateX(-50%);
+  background:var(--coral);color:var(--papel);padding:3px 12px;border-radius:2px;
+  font-size:.66rem;letter-spacing:.38em;font-weight:600;
 }
-body.noite .shh::before{background:var(--noite)}
-.shh strong{display:block;font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:400;font-size:1.6rem;color:var(--creme)}
-.shh p{margin:6px 0 0;color:#d9d0bf;line-height:1.5;font-size:.97rem}
+.shh strong{display:block;font-family:var(--display);font-style:italic;font-weight:400;font-size:1.5rem;color:var(--marinho)}
+.shh p{margin:6px 0 0;color:#4a3d2c;line-height:1.5;font-size:.95rem}
 
 /* infos */
-.infos{display:grid;grid-template-columns:1fr 1px 1fr;gap:18px;margin:36px 0 0;text-align:center}
-.infos .sep{background:rgba(246,239,225,.25)}
-.rotulo{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mostarda);font-weight:600;margin-bottom:8px}
-.grande{font-family:"Fraunces",Georgia,serif;font-size:1.45rem;line-height:1.15;color:var(--creme)}
-.infos small{display:block;color:#cfc6b4;margin-top:6px;font-size:.88rem;line-height:1.45}
-.infos a{color:var(--mostarda);text-decoration:none;border-bottom:1px solid rgba(224,165,38,.5)}
-.contagem{text-align:center;margin-top:26px;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:#a99f8c}
+.infos{display:grid;grid-template-columns:1fr 1px 1fr;gap:16px;margin:34px 0 0;text-align:center}
+.infos > div{min-width:0}
+.infos .sep{background:rgba(20,54,93,.25)}
+.rotulo{font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:8px}
+.grande{font-family:var(--display);font-size:1.35rem;line-height:1.15;color:var(--marinho);text-wrap:balance}
+.infos small{display:block;color:var(--cinza);margin-top:6px;font-size:.86rem;line-height:1.45}
+.infos a{color:var(--marinho);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(20,54,93,.4)}
+.infos a:focus-visible{outline:2px solid var(--coral);outline-offset:2px}
+.contagem{text-align:center;margin-top:24px;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cinza)}
 
 /* comanda */
 .comanda{
   position:relative;background:var(--papel);color:var(--tinta);margin-top:84px;
-  padding:78px 24px 28px;border-radius:2px;
-  box-shadow:0 24px 50px rgba(0,0,0,.35);
+  padding:78px 22px 28px;border-radius:2px;
+  box-shadow:10px 16px 0 rgba(110,80,30,.12),0 20px 40px var(--sombra);
   background-image:repeating-linear-gradient(transparent 0 31px,#ebe1cd 31px 32px);
-  background-position:0 100px;
+  background-position:0 100px;transform:rotate(-.6deg);
 }
 .comanda::before,.comanda::after{
   content:"";position:absolute;left:0;right:0;height:12px;
@@ -128,31 +174,31 @@ body.noite .shh::before{background:var(--noite)}
 .medalhao{
   position:absolute;left:50%;top:-62px;transform:translateX(-50%);
   width:116px;height:136px;border-radius:50%;
-  border:3px solid var(--mostarda);box-shadow:0 0 0 6px var(--papel),0 10px 24px rgba(0,0,0,.3);
-  background:var(--verde);overflow:hidden;
+  border:3px solid var(--sol);box-shadow:0 0 0 6px var(--papel),0 10px 24px var(--sombra);
+  background:#35adbd;overflow:hidden;
 }
 .medalhao img{width:100%;height:100%;object-fit:cover}
 .medalhao img.fallback{object-fit:contain;padding:18px}
 .cabecalho{
-  display:flex;justify-content:space-between;align-items:baseline;
-  font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:.72rem;color:var(--tijolo);
-  border-bottom:2px solid var(--tijolo);padding-bottom:7px;margin-bottom:12px;
+  display:flex;justify-content:space-between;align-items:baseline;gap:8px;
+  font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:.7rem;color:var(--coral);
+  border-bottom:2px solid var(--coral);padding-bottom:7px;margin-bottom:12px;
 }
-.itens{font-family:"Caveat",cursive;font-size:1.45rem;line-height:32px;color:#2b3a8a;margin:0 0 18px;padding:0;list-style:none}
-.itens li{display:flex;align-items:baseline;gap:6px}
-.itens li .pts{flex:1;border-bottom:2px dotted rgba(43,58,138,.45);transform:translateY(-6px)}
-.itens .obs{font-size:1.1rem;color:#5a6aa8;line-height:24px}
-.comanda h2{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:1.6rem;text-align:center;margin:8px 0 0;color:var(--verde)}
-.prazo{text-align:center;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tijolo);margin:6px 0 18px;font-weight:600}
+.itens{font-family:var(--mao);font-size:1.4rem;line-height:32px;color:var(--tinta-caneta);margin:0 0 18px;padding:0;list-style:none}
+.itens li{display:flex;align-items:baseline;gap:6px;white-space:nowrap}
+.itens li .pts{flex:1;min-width:10px;border-bottom:2px dotted rgba(43,58,138,.45);transform:translateY(-6px)}
+.itens .obs{font-size:1.05rem;color:#5a6aa8;line-height:24px;white-space:normal}
+.comanda h2{font-family:var(--display);font-weight:500;font-size:1.55rem;text-align:center;margin:8px 0 0;color:var(--marinho);text-wrap:balance}
+.prazo{text-align:center;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin:6px 0 18px;font-weight:600}
 
 .escolha{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
 .escolha button{
-  font:inherit;font-weight:600;font-size:.98rem;padding:14px 8px;border-radius:3px;cursor:pointer;
-  border:1.5px solid var(--tinta);background:transparent;color:var(--tinta);
-  transition:background .2s,color .2s;
+  font:inherit;font-weight:600;font-size:.98rem;padding:14px 6px;border-radius:3px;cursor:pointer;
+  border:1.5px solid var(--tinta);background:transparent;color:var(--tinta);transition:background .2s,color .2s;
 }
-.escolha button[aria-pressed="true"].sim{background:var(--verde);border-color:var(--verde);color:var(--creme)}
-.escolha button[aria-pressed="true"].nao{background:var(--tinta);color:var(--creme)}
+.escolha button:focus-visible,.enviar:focus-visible{outline:3px solid var(--sol);outline-offset:2px}
+.escolha button[aria-pressed="true"].sim{background:var(--marinho);border-color:var(--marinho);color:var(--papel)}
+.escolha button[aria-pressed="true"].nao{background:var(--tinta);color:var(--papel)}
 
 .campo{margin-bottom:14px}
 .campo label{display:block;font-weight:600;font-size:.9rem;margin-bottom:6px}
@@ -162,119 +208,107 @@ body.noite .shh::before{background:var(--noite)}
   border:1px solid #d6cab2;background:#fff;color:var(--tinta);
 }
 .campo textarea{min-height:84px;resize:vertical}
-.campo input:focus,.campo select:focus,.campo textarea:focus{outline:none;border-color:var(--verde);box-shadow:0 0 0 3px rgba(18,61,47,.15)}
-.campo.erro input,.campo.erro select{border-color:var(--tijolo)}
-.msg-erro{color:var(--tijolo);font-size:.84rem;margin-top:4px;display:none}
+.campo input:focus,.campo select:focus,.campo textarea:focus{outline:none;border-color:var(--marinho);box-shadow:0 0 0 3px rgba(20,54,93,.15)}
+.campo.erro input,.campo.erro select{border-color:var(--coral)}
+.msg-erro{color:var(--coral);font-size:.84rem;margin-top:4px;display:none}
 .campo.erro .msg-erro{display:block}
 .escondido{display:none!important}
 
 .enviar{
   width:100%;font:inherit;font-weight:600;font-size:1rem;letter-spacing:.12em;text-transform:uppercase;
   padding:16px;border-radius:3px;border:none;cursor:pointer;
-  background:var(--tijolo);color:#fff;margin-top:6px;transition:background .2s,opacity .2s;
+  background:var(--coral);color:#fff;margin-top:6px;transition:background .2s,opacity .2s;
 }
-.enviar:hover{background:#9e2a23}
+.enviar:hover{background:#bf4522}
 .enviar:disabled{opacity:.6;cursor:wait}
 .nota{font-size:.8rem;color:var(--cinza);text-align:center;margin:14px 0 0}
+.falha{color:var(--coral);font-size:.88rem;text-align:center;margin:10px 0 0}
 
 .sucesso{text-align:center;padding:4px 0 6px}
 .sucesso h2{margin-bottom:8px}
 .sucesso p{font-size:1rem;line-height:1.55}
 .sucesso .lembrete{border-top:1px solid #e3d8c3;padding-top:14px;margin-top:16px;font-size:.92rem;color:var(--cinza)}
-.sucesso a.btn-link{display:inline-block;margin-top:12px;color:var(--verde);font-weight:600;font-size:.9rem}
+.sucesso a.btn-link{display:inline-block;margin-top:12px;color:var(--marinho);font-weight:600;font-size:.9rem}
 
 /* carimbo */
 .carimbo{
-  position:absolute;right:14px;top:120px;z-index:5;pointer-events:none;
-  font-family:"Inter",sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:1.15rem;
+  position:absolute;right:12px;top:118px;z-index:5;pointer-events:none;
+  font-family:var(--texto);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:1.1rem;
   color:var(--c);border:3px solid var(--c);border-radius:4px;padding:6px 12px;
   transform:rotate(-12deg) scale(2.4);opacity:0;mix-blend-mode:multiply;
-  -webkit-mask-image:radial-gradient(circle at 30% 40%,#000 60%,rgba(0,0,0,.75) 100%);
 }
 .carimbo.bate{animation:carimba .45s cubic-bezier(.3,1.6,.5,1) forwards}
 @keyframes carimba{to{transform:rotate(-12deg) scale(1);opacity:.85}}
 
-/* rodapé */
-.friso{
-  height:40px;margin:56px -20px 0;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Crect width='80' height='40' fill='%23f6efe1'/%3E%3Cpath d='M0 20 C20 0 20 0 40 20 S60 40 80 20 V40 H0Z' fill='%231f1b16'/%3E%3C/svg%3E");
-  background-size:80px 40px;opacity:.9;
-}
-.assinatura{text-align:center;font-family:"Fraunces",Georgia,serif;font-style:italic;font-size:1.3rem;margin-top:22px;color:var(--creme)}
+/* pegadas na areia até a assinatura */
+.pegadas{display:flex;flex-direction:column;align-items:center;gap:10px;margin:48px 0 0}
+.pegadas span{width:9px;height:15px;border-radius:50%;background:rgba(150,110,50,.22)}
+.pegadas span:nth-child(odd){transform:translateX(-9px) rotate(-8deg)}
+.pegadas span:nth-child(even){transform:translateX(9px) rotate(8deg)}
+.assinatura{text-align:center;font-family:var(--display);font-style:italic;font-size:1.35rem;margin-top:18px;color:var(--marinho)}
 
 /* brinde (sucesso) */
 .brinde{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .4s}
-.brinde.ativo{opacity:1;background:rgba(8,20,15,.55)}
+.brinde.ativo{opacity:1;background:rgba(20,30,50,.35)}
 .brinde .par{position:relative;width:240px;height:200px}
-.brinde img{position:absolute;bottom:0;height:150px;filter:drop-shadow(0 10px 14px rgba(0,0,0,.4))}
+.brinde img{position:absolute;bottom:0;height:150px;filter:drop-shadow(0 10px 14px rgba(0,0,0,.35))}
 .brinde .c1{left:-40vw}
 .brinde .c2{right:-40vw;transform:scaleX(-1)}
 .brinde.ativo .c1{animation:entraE 1.1s cubic-bezier(.3,1.2,.5,1) forwards}
 .brinde.ativo .c2{animation:entraD 1.1s cubic-bezier(.3,1.2,.5,1) forwards}
 @keyframes entraE{0%{left:-40vw;transform:rotate(0)}70%{left:38px;transform:rotate(14deg)}100%{left:30px;transform:rotate(10deg)}}
 @keyframes entraD{0%{right:-40vw;transform:scaleX(-1) rotate(0)}70%{right:38px;transform:scaleX(-1) rotate(14deg)}100%{right:30px;transform:scaleX(-1) rotate(10deg)}}
-.brinde .timtim{
-  position:absolute;left:0;right:0;top:-34px;text-align:center;
-  font-family:"Fraunces",Georgia,serif;font-style:italic;font-size:2.4rem;color:var(--creme);
-  opacity:0;transform:translateY(10px);
-}
+.brinde .timtim{position:absolute;left:0;right:0;top:-34px;text-align:center;font-family:var(--display);font-style:italic;font-size:2.4rem;color:var(--papel);opacity:0;transform:translateY(10px);text-shadow:0 2px 8px rgba(0,0,0,.3)}
 .brinde.ativo .timtim{animation:aparece .5s .8s forwards}
 @keyframes aparece{to{opacity:1;transform:translateY(0)}}
-.gota{position:absolute;left:50%;top:40px;width:9px;height:9px;border-radius:50%;background:#fff8e6;opacity:0}
+.gota{position:absolute;left:50%;top:40px;border-radius:50%;background:#fff8e6;opacity:0}
 .brinde.ativo .gota{animation:espirra .9s .75s ease-out forwards}
 @keyframes espirra{0%{opacity:1;transform:translate(0,0)}100%{opacity:0;transform:translate(var(--x),var(--y))}}
 
 /* cachorro do "não" */
-.palco{
-  position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  pointer-events:none;opacity:0;transition:opacity .5s ease;padding:20px;
-}
-.palco.ativo{opacity:1;pointer-events:auto;background:rgba(8,20,15,.6)}
-.palco .dog{width:min(58vw,260px);transform:translateY(80px);transition:transform .6s cubic-bezier(.2,1.3,.4,1);filter:drop-shadow(0 14px 20px rgba(0,0,0,.5))}
+.palco{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .5s ease;padding:20px}
+.palco.ativo{opacity:1;pointer-events:auto;background:var(--veu)}
+.palco .dog{width:min(58vw,260px);transform:translateY(80px);transition:transform .6s cubic-bezier(.2,1.3,.4,1);filter:drop-shadow(0 14px 20px rgba(0,0,0,.45))}
 .palco.ativo .dog{transform:translateY(0)}
-.balao{
-  position:relative;max-width:320px;background:var(--papel);color:var(--tinta);border-radius:4px;
-  padding:14px 18px;font-weight:500;font-size:1.02rem;line-height:1.45;text-align:center;margin-bottom:18px;
-  box-shadow:0 10px 30px rgba(0,0,0,.35);opacity:0;transform:translateY(8px);transition:all .4s .35s;
-}
+.balao{position:relative;max-width:320px;background:var(--papel);color:var(--tinta);border-radius:4px;padding:14px 18px;font-weight:500;font-size:1.02rem;line-height:1.45;text-align:center;margin-bottom:18px;box-shadow:0 10px 30px rgba(0,0,0,.3);opacity:0;transform:translateY(8px);transition:all .4s .35s}
 .balao::after{content:"";position:absolute;left:50%;bottom:-10px;transform:translateX(-50%);border:10px solid transparent;border-top-color:var(--papel);border-bottom:0}
 .palco.ativo .balao{opacity:1;transform:translateY(0)}
-.palco .fechar{margin-top:14px;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:#bfb6a4}
+.palco .fechar{margin-top:14px;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#e8e1d2}
 
 body.encerrado .so-aberto{display:none!important}
 
-@media (max-width:380px){
-  .infos{grid-template-columns:1fr;gap:22px}
+@media (max-width:400px){
+  .infos{grid-template-columns:1fr;gap:20px}
   .infos .sep{height:1px;width:60px;margin:0 auto}
+  .itens{font-size:1.25rem}
 }
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01s!important;transition:none!important}
+  *,*::before,*::after{animation-duration:.01s!important;animation-iteration-count:1!important;transition:none!important}
 }
 </style>
 </head>
 <body>
 <div class="calcadao" aria-hidden="true"></div>
+<div class="mar" aria-hidden="true"></div>
+<div class="raios" aria-hidden="true"></div>
+<div class="sol" aria-hidden="true"></div>
 
 <main>
-  <div class="cordao" aria-hidden="true">
-    <svg viewBox="0 0 100 64" preserveAspectRatio="none"><path d="M0 6 Q25 44 50 26 T100 6" fill="none" stroke="#2a2a2a" stroke-width="1.2" vector-effect="non-scaling-stroke"/></svg>
-    <div class="lampadas" id="lampadas"></div>
-  </div>
-
   <header class="hero">
     <div class="eyebrow">Aniversário surpresa</div>
     <h1 class="nome">Maria<br>Vitória</h1>
     <div class="idade">28 anos</div>
     <p class="lede">Um sábado de sol, chinelo, piscina e copo americano pra comemorar a Mavi.</p>
     <div class="cena" aria-hidden="true">
+      <div class="sombra-gs"></div>
       <img class="gs" src="img/guarda-sol.png" alt="">
       <img class="cad" src="img/cadeira-vermelha.png" alt="">
       <img class="copo" src="img/copo.png" alt="">
-      <div class="chao"></div>
     </div>
   </header>
 
   <section class="shh" role="note">
+    <span class="tag">SHHH</span>
     <strong>Ela não sabe de nada.</strong>
     <p>Nada de comentar, dar indireta ou postar antes da hora. Bico fechado até o dia 21.</p>
   </section>
@@ -282,14 +316,14 @@ body.encerrado .so-aberto{display:none!important}
   <section class="infos">
     <div>
       <div class="rotulo">Quando</div>
-      <div class="grande">Sábado,<br>21 de novembro</div>
+      <div class="grande">Sábado, 21 de novembro</div>
       <small>das 9h às 18h</small>
     </div>
     <div class="sep" aria-hidden="true"></div>
     <div>
       <div class="rotulo">Onde</div>
       <div class="grande">Chácara Paraíso do Sol</div>
-      <small>Estr. do Galarda, 818 · Jd. Santa Nely<br>Campo Largo/PR</small>
+      <small>Estr. do Galarda, 818<br>Jd. Santa Nely · Campo Largo/PR</small>
       <small><a href="https://maps.google.com/?q=Ch%C3%A1cara+Para%C3%ADso+do+Sol+Estrada+do+Galarda+818+Campo+Largo" target="_blank" rel="noopener">mapa</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/chacara.paraisodosol/" target="_blank" rel="noopener">instagram</a></small>
     </div>
   </section>
@@ -348,12 +382,13 @@ body.encerrado .so-aberto{display:none!important}
         </div>
 
         <button type="submit" class="enviar" id="btn-enviar">Fechar a comanda</button>
+        <p class="falha" id="falha" hidden>Não consegui enviar agora. Confira sua internet e tente de novo.</p>
         <p class="nota">Os dados são usados só para a organização da festa.</p>
       </form>
     </div>
   </section>
 
-  <div class="friso" aria-hidden="true"></div>
+  <div class="pegadas" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
   <p class="assinatura">Te esperamos lá.</p>
 </main>
 
@@ -387,24 +422,6 @@ const CONFIG = {
   FRASE_NAO: "Vai perder? Então sobra mais cerveja pra mim.",
   FRASE_ENCERRADO: "A comanda já fechou: as confirmações iam até 18/11. Fala direto com quem te mandou o convite."
 };
-
-/* ====== lâmpadas ====== */
-(function(){
-  const box=document.getElementById("lampadas");
-  const n = window.innerWidth < 480 ? 10 : 14;
-  for(let i=0;i<n;i++){
-    const t=(i+.5)/n; let y;
-    if(t<.5){const u=t*2;y=(1-u)*(1-u)*6+2*(1-u)*u*44+u*u*26;}
-    else{const u=(t-.5)*2;y=(1-u)*(1-u)*26+2*(1-u)*u*8+u*u*6;}
-    const b=document.createElement("span");
-    b.className="lampada";
-    b.style.setProperty("--y",(y+2)+"px");
-    b.style.setProperty("--d",(i*.31)+"s");
-    box.appendChild(b);
-  }
-})();
-
-/* ====== foto (fallback se não tiver) ====== */
 
 /* ====== contagem ====== */
 (function(){
@@ -467,7 +484,6 @@ botoes.forEach(b=>b.addEventListener("click",()=>{
   document.getElementById("c-presenca").classList.remove("erro");
   const nao=presenca==="nao";
   form.querySelectorAll(".so-sim").forEach(el=>el.classList.toggle("escondido",nao));
-  document.body.classList.toggle("noite",nao);
   if(nao) mostraDog(CONFIG.FRASE_NAO,false); else escondeDog();
 }));
 
@@ -523,6 +539,7 @@ function guardaCopia(dados){
 
 form.addEventListener("submit",async e=>{
   e.preventDefault();
+  document.getElementById("falha").hidden=true;
   if(!valida()){
     const primeiro=form.querySelector(".erro");
     if(primeiro) primeiro.scrollIntoView({behavior:"smooth",block:"center"});
@@ -553,7 +570,7 @@ form.addEventListener("submit",async e=>{
     mostraSucesso(dados);
   }catch(err){
     btn.disabled=false; btn.textContent="Fechar a comanda";
-    alert("Não consegui enviar agora. Confira sua internet e tente de novo.");
+    document.getElementById("falha").hidden=false;
   }
 });
 
@@ -564,7 +581,7 @@ function mostraSucesso(d){
   const area=document.getElementById("area-form");
   const zap=CONFIG.WHATSAPP?`<a class="btn-link" target="_blank" rel="noopener" href="https://wa.me/${CONFIG.WHATSAPP}?text=${encodeURIComponent(`Oi! Respondi o convite da ${CONFIG.NOME_CURTO}: ${d.presenca==="Sim"?"vou!":"não vou poder."} (${d.nome})`)}">Avisar no WhatsApp</a><br>`:"";
   const sim=d.presenca==="Sim";
-  if(sim){ document.body.classList.remove("noite"); escondeDog(); }
+  if(sim) escondeDog();
   area.innerHTML=`<div class="sucesso">
     <h2>${sim?"Presença confirmada":"Resposta enviada"}</h2>
     <p>${sim
@@ -575,14 +592,14 @@ function mostraSucesso(d){
   </div>`;
   document.getElementById("comanda").scrollIntoView({behavior:"smooth",block:"start"});
   setTimeout(()=>{
-    if(sim){ carimba("Confirmado","#b8322a"); brinde(); }
-    else carimba("Fica pra próxima","#24438f");
+    if(sim){ carimba("Confirmado","#d9532c"); brinde(); }
+    else carimba("Fica pra próxima","#14365d");
   },450);
 }
 
 /* ====== encerramento automático ====== */
 if(new Date()>=CONFIG.PRAZO_FIM){
-  document.body.classList.add("encerrado","noite");
+  document.body.classList.add("encerrado");
   document.getElementById("titulo-form").textContent="Confirmações encerradas";
   carimba("Fechada","#1f1b16");
   mostraDog(CONFIG.FRASE_ENCERRADO,true);

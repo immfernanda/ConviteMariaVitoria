@@ -114,6 +114,19 @@ body{
   from{transform:translate(105vw,0)}
   to{transform:translate(-40vw,-22vh)}
 }
+/* areia do PC: guarda-sóis e cangas vistos de cima (rolam junto com a página) */
+.areia-deco{position:absolute;left:0;top:0;width:100%;z-index:0;pointer-events:none;display:none}
+.areia-deco > *{position:absolute}
+.areia-deco .gs-cima{width:150px;height:150px;filter:drop-shadow(16px 20px 0 rgba(110,80,30,.16))}
+.areia-deco .canga{width:62px;height:118px;border-radius:3px;box-shadow:4px 5px 0 rgba(110,80,30,.12)}
+.areia-deco .canga::before,.areia-deco .canga::after{content:"";position:absolute;left:2px;right:2px;height:5px;
+  background:repeating-linear-gradient(90deg,currentColor 0 2px,transparent 2px 5px)}
+.areia-deco .canga::before{top:-5px}.areia-deco .canga::after{bottom:-5px}
+.areia-deco .chinelo{width:30px;height:34px}
+body{position:relative}
+@media (min-width:1440px){.areia-deco{display:block}}
+.areia-deco .gs-cima{width:clamp(100px,calc((50vw - 430px) * .45),150px);height:auto;aspect-ratio:1}
+
 /* gente, bikes e carros vistos de cima (desenhados apontando pra cima) */
 .movel{position:fixed;z-index:1;pointer-events:none;top:0;filter:drop-shadow(3px 4px 1.5px rgba(0,0,0,.16));
   animation-timing-function:linear;animation-iteration-count:infinite}
@@ -429,6 +442,7 @@ body.encerrado .so-aberto{display:none!important}
 <div class="gaivota" style="--t:clamp(54px,14vw,110px);--y:38vh;--dur:26s;--delay:-4s" aria-hidden="true"><img src="img/gaivota.png" alt=""></div>
 <div class="gaivota" style="--t:clamp(40px,10vw,80px);--y:72vh;--dur:34s;--delay:-20s" aria-hidden="true"><img src="img/gaivota.png" alt=""></div>
 <div id="movimento" aria-hidden="true"></div>
+<div class="areia-deco" id="areiaDeco" aria-hidden="true"></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <!-- ciclista visto de cima, apontando pra cima -->
@@ -669,6 +683,44 @@ const SVGNS="http://www.w3.org/2000/svg";
     s.style.setProperty("--quadro",r(["#d22","#1f4fb4","#2fae5a","#111"]));s.style.setProperty("--cor",r(carros));
     s.innerHTML=`<use href="#${tipo}"/>`;
     box.appendChild(s);
+  });
+})();
+
+/* ====== guarda-sóis e cangas na areia (só PC) ====== */
+(function(){
+  const box=document.getElementById("areiaDeco");
+  const vao="(50vw - 280px - var(--w-calcada))";           // areia livre entre o calçadão e o convite
+  const x=f=>`calc(var(--w-calcada) + ${vao} * ${f})`;
+  const guardaSol=(cores)=>{
+    let fatias="";const n=10;
+    for(let i=0;i<n;i++){
+      const a0=i/n*Math.PI*2,a1=(i+1)/n*Math.PI*2,r=60;
+      fatias+=`<path d="M0 0 L${(Math.cos(a0)*r).toFixed(1)} ${(Math.sin(a0)*r).toFixed(1)} A${r} ${r} 0 0 1 ${(Math.cos(a1)*r).toFixed(1)} ${(Math.sin(a1)*r).toFixed(1)}Z" fill="${cores[i%cores.length]}"/>`;
+    }
+    return `<svg class="gs-cima" viewBox="-64 -64 128 128">${fatias}
+      <circle r="60" fill="none" stroke="rgba(0,0,0,.08)" stroke-width="2"/>
+      <circle r="5" fill="#8a6a3a"/><circle r="2.2" fill="#c9a46a"/></svg>`;
+  };
+  const chinelo=c=>`<svg class="chinelo" viewBox="0 0 30 34"><ellipse cx="9" cy="17" rx="6" ry="14" fill="${c}"/><ellipse cx="22" cy="18" rx="6" ry="14" fill="${c}"/>
+    <path d="M9 9 L4 17 M9 9 L14 17 M22 10 L17 18 M22 10 L27 18" stroke="#2fae5a" stroke-width="1.8" stroke-linecap="round"/></svg>`;
+  const itens=[
+    // [html, f (0 = calçadão, 1 = convite), topo em px, rotação, estilo extra]
+    [guardaSol(["#1f4fb4","#ffffff"]),.18,90,0],
+    [`<div class="canga" style="background:repeating-linear-gradient(90deg,#e0362c 0 10px,#f6c445 10px 20px);color:#e0362c"></div>`,.62,150,-12],
+    [chinelo("#f6c445"),.66,300,18],
+    [guardaSol(["#2fae5a","#f6c445"]),.5,560,0],
+    [`<div class="canga" style="background:repeating-linear-gradient(0deg,#ff8fb1 0 8px,#fff 8px 16px);color:#ff8fb1"></div>`,.14,640,8],
+    [`<div class="canga" style="background:repeating-linear-gradient(90deg,#1f4fb4 0 12px,#fff 12px 24px);color:#1f4fb4"></div>`,.32,670,14],
+    [guardaSol(["#e0362c","#f6c445"]),.22,1080,0],
+    [`<div class="canga" style="background:repeating-linear-gradient(45deg,#2fae5a 0 9px,#f6c445 9px 18px);color:#2fae5a"></div>`,.68,1120,-6],
+    [chinelo("#1f4fb4"),.42,1260,-20],
+    [guardaSol(["#ff8fb1","#ffffff"]),.6,1560,0],
+    [`<div class="canga" style="background:repeating-linear-gradient(90deg,#f6c445 0 10px,#1f4fb4 10px 20px);color:#1f4fb4"></div>`,.18,1640,10]
+  ];
+  itens.forEach(([html,f,top,rot])=>{
+    const d=document.createElement("div");d.innerHTML=html;const el=d.firstElementChild;
+    el.style.left=x(f);el.style.top=top+"px";if(rot)el.style.transform=`rotate(${rot}deg)`;
+    box.appendChild(el);
   });
 })();
 

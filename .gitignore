@@ -1,0 +1,6 @@
+# imagens originais (o site usa as versões recortadas em img/)
+*.jpg
+!img/*.jpg
+download.png
+outra/
+.claude/

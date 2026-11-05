@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aniversário surpresa da Maria Vitória</title>
+<meta name="description" content="21/11 na Chácara Paraíso do Sol. É surpresa: não conte pra Mavi! Confirme sua presença.">
+<meta property="og:title" content="🤫 Aniversário SURPRESA da Maria Vitória">
+<meta property="og:description" content="Sábado, 21/11, na Chácara Paraíso do Sol. Não conta pra Mavi! Confirme sua presença aqui.">
+<meta property="og:image" content="https://immfernanda.github.io/ConviteMariaVitoria/img/og.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#ffcc29">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍺</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --verde:#00843d;
+  --verde-escuro:#0b5130;
+  --amarelo:#ffcc29;
+  --amarelo-claro:#fff1b8;
+  --azul:#1f3fa8;
+  --vermelho:#d62828;
+  --creme:#fffaf0;
+  --areia:#f6e7c8;
+  --texto:#2b2118;
+  --noite:#0c1838;
+  --sombra:0 10px 30px rgba(43,33,24,.18);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  font-family:"Outfit",system-ui,sans-serif;
+  color:var(--texto);
+  background-color:var(--areia);
+  min-height:100vh;
+  overflow-x:hidden;
+  transition:background-color .9s ease;
+}
+/* calçadão de Copacabana */
+.calcadao{
+  position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='64' viewBox='0 0 160 64'%3E%3Cpath d='M0 32 C40 0 40 0 80 32 S120 64 160 32 V64 H0Z' fill='%232b2118' fill-opacity='.075'/%3E%3C/svg%3E");
+  background-size:160px 64px;
+  transition:opacity .9s ease;
+}
+.ceu-noite{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;
+  background:
+    radial-gradient(1px 1px at 12% 20%,#fff8 50%,transparent 51%),
+    radial-gradient(1.5px 1.5px at 70% 12%,#fffa 50%,transparent 51%),
+    radial-gradient(1px 1px at 40% 35%,#fff7 50%,transparent 51%),
+    radial-gradient(1.5px 1.5px at 88% 40%,#fff9 50%,transparent 51%),
+    radial-gradient(1px 1px at 25% 60%,#fff6 50%,transparent 51%),
+    radial-gradient(1px 1px at 60% 75%,#fff6 50%,transparent 51%),
+    linear-gradient(180deg,#0c1838 0%,#1b2a5c 70%,#2c2350 100%);
+  transition:opacity .9s ease;
+}
+body.noite .ceu-noite{opacity:1}
+body.noite .calcadao{opacity:.25}
+
+/* gambiarra de lampadinhas */
+.gambiarra{position:relative;height:70px;margin:0 -8px;pointer-events:none}
+.gambiarra svg{position:absolute;inset:0;width:100%;height:100%}
+.lampadas{position:absolute;inset:0;display:flex;justify-content:space-around;padding:0 10px}
+.lampada{
+  width:14px;height:18px;border-radius:50% 50% 45% 45%;
+  margin-top:var(--y);
+  background:var(--c);
+  box-shadow:0 0 10px 2px var(--c);
+  animation:pisca 2.4s ease-in-out infinite;animation-delay:var(--d);
+  position:relative;
+}
+.lampada::before{content:"";position:absolute;top:-6px;left:4px;width:6px;height:7px;background:#3a3a3a;border-radius:2px}
+@keyframes pisca{0%,100%{opacity:1}50%{opacity:.55}}
+
+main{max-width:520px;margin:0 auto;padding:0 16px 40px;position:relative}
+
+/* topo */
+.hero{text-align:center;padding-top:6px;position:relative}
+.selo{
+  display:inline-block;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;
+  background:var(--verde);color:#fff;padding:6px 14px;border-radius:999px;
+  box-shadow:0 3px 0 var(--verde-escuro);
+}
+h1.nome{
+  font-family:"Shrikhand",cursive;font-weight:400;
+  font-size:clamp(3rem,15vw,5.2rem);line-height:.95;margin:.25em 0 .05em;
+  color:var(--amarelo);
+  text-shadow:3px 3px 0 var(--verde),6px 6px 0 var(--azul),9px 9px 14px rgba(0,0,0,.18);
+  transform:rotate(-3deg);
+}
+.subtitulo{font-family:"Caveat",cursive;font-size:1.7rem;font-weight:700;color:var(--azul);margin:.2em 0 0;transition:color .9s}
+body.noite .subtitulo{color:var(--amarelo-claro)}
+.contagem{margin-top:6px;font-weight:600;color:var(--verde-escuro);transition:color .9s}
+body.noite .contagem{color:#cfe8d8}
+
+/* psiu - é surpresa */
+.psiu{
+  margin:22px auto 6px;max-width:440px;position:relative;
+  background:var(--amarelo);border-radius:6px;padding:16px 18px 16px 70px;
+  transform:rotate(-1.5deg);box-shadow:var(--sombra);
+  border:3px dashed var(--texto);
+}
+.psiu .dedo{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:2.4rem}
+.psiu strong{display:block;font-family:"Shrikhand",cursive;font-weight:400;font-size:1.35rem;color:var(--vermelho);letter-spacing:.02em}
+.psiu p{margin:4px 0 0;font-weight:500;line-height:1.35}
+
+/* informações */
+.infos{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0 8px}
+.info{background:var(--creme);border-radius:14px;padding:14px;box-shadow:var(--sombra);position:relative;overflow:hidden}
+.info::after{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:repeating-linear-gradient(90deg,var(--verde) 0 14px,var(--amarelo) 14px 28px,var(--azul) 28px 42px)}
+.info .dia{font-family:"Shrikhand",cursive;font-size:3rem;line-height:1;color:var(--vermelho)}
+.info .mes{font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.info small{display:block;color:#6b5a48;margin-top:4px;font-size:.9rem;line-height:1.35}
+.info .local{font-family:"Shrikhand",cursive;font-size:1.15rem;line-height:1.1;color:var(--verde-escuro)}
+.info a{color:var(--azul);font-weight:600}
+.dayuse{
+  background:var(--creme);border-radius:14px;padding:14px 16px;box-shadow:var(--sombra);
+  display:flex;gap:12px;align-items:center;margin-bottom:24px;
+}
+.dayuse .preco{font-family:"Shrikhand",cursive;font-size:1.6rem;color:var(--verde);white-space:nowrap}
+.dayuse p{margin:0;font-size:.95rem;line-height:1.35}
+
+/* comanda (cartão de confirmação) */
+.comanda{
+  position:relative;background:var(--creme);margin-top:58px;
+  padding:72px 22px 26px;border-radius:4px;box-shadow:var(--sombra);
+  background-image:repeating-linear-gradient(transparent 0 31px,#e7dcc6 31px 32px);
+  background-position:0 92px;
+}
+.comanda::before,.comanda::after{
+  content:"";position:absolute;left:0;right:0;height:12px;
+  background:radial-gradient(circle at 8px -2px,transparent 9px,var(--creme) 10px) repeat-x;
+  background-size:16px 12px;
+}
+.comanda::before{top:-11px;transform:rotate(180deg)}
+.comanda::after{bottom:-11px}
+.cabecalho{
+  display:flex;justify-content:space-between;align-items:baseline;
+  font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.75rem;color:var(--vermelho);
+  border-bottom:2px solid var(--vermelho);padding-bottom:6px;margin-bottom:14px;
+}
+.medalhao{
+  position:absolute;left:50%;top:-58px;transform:translateX(-50%);
+  width:112px;height:132px;border-radius:50%;
+  border:5px solid var(--amarelo);outline:4px solid var(--verde);
+  background:var(--azul);overflow:hidden;box-shadow:var(--sombra);
+}
+.medalhao img{width:100%;height:100%;object-fit:cover}
+.medalhao img.fallback{object-fit:contain;padding:14px}
+.medalhao-emoji{position:absolute;left:calc(50% + 34px);top:40px;font-size:2rem;transform:rotate(14deg);filter:drop-shadow(0 2px 2px rgba(0,0,0,.25))}
+.comanda h2{font-family:"Shrikhand",cursive;font-weight:400;font-size:1.65rem;text-align:center;margin:0;color:var(--verde-escuro)}
+.prazo{text-align:center;font-family:"Caveat",cursive;font-size:1.35rem;font-weight:700;color:var(--vermelho);margin:2px 0 16px}
+
+.escolha{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.escolha button{
+  font:inherit;font-weight:700;font-size:1.02rem;padding:14px 8px;border-radius:12px;cursor:pointer;
+  border:2.5px solid var(--texto);background:#fff;color:var(--texto);
+  box-shadow:0 4px 0 var(--texto);transition:transform .12s, box-shadow .12s, background .2s;
+}
+.escolha button:active{transform:translateY(3px);box-shadow:0 1px 0 var(--texto)}
+.escolha button[aria-pressed="true"].sim{background:var(--verde);color:#fff}
+.escolha button[aria-pressed="true"].nao{background:var(--azul);color:#fff}
+
+.campo{margin-bottom:14px}
+.campo label{display:block;font-weight:600;margin-bottom:5px}
+.campo label .opc{font-weight:400;color:#8a7864;font-size:.88rem}
+.campo input,.campo select,.campo textarea{
+  width:100%;font:inherit;font-size:16px;padding:12px 13px;border-radius:10px;
+  border:2px solid #d8c9ad;background:#fff;color:var(--texto);
+}
+.campo textarea{min-height:84px;resize:vertical}
+.campo input:focus,.campo select:focus,.campo textarea:focus{outline:none;border-color:var(--verde);box-shadow:0 0 0 3px #00843d33}
+.campo.erro input,.campo.erro select{border-color:var(--vermelho)}
+.msg-erro{color:var(--vermelho);font-size:.88rem;margin-top:4px;display:none}
+.campo.erro .msg-erro{display:block}
+.so-sim{transition:opacity .25s}
+.escondido{display:none!important}
+
+.enviar{
+  width:100%;font:inherit;font-family:"Shrikhand",cursive;font-size:1.3rem;letter-spacing:.02em;
+  padding:15px;border-radius:14px;border:none;cursor:pointer;
+  background:var(--vermelho);color:#fff;box-shadow:0 5px 0 #8f1717;margin-top:6px;
+  transition:transform .12s, box-shadow .12s, opacity .2s;
+}
+.enviar:active{transform:translateY(4px);box-shadow:0 1px 0 #8f1717}
+.enviar:disabled{opacity:.6;cursor:wait}
+.nota{font-size:.82rem;color:#8a7864;text-align:center;margin:14px 0 0}
+
+.sucesso{text-align:center;padding:6px 0}
+.sucesso .big{font-size:3rem}
+.sucesso h2{margin-bottom:6px}
+.sucesso p{font-size:1.05rem;line-height:1.45}
+.sucesso .lembrete{background:var(--amarelo);border-radius:10px;padding:10px 12px;font-weight:600;margin-top:14px}
+.sucesso a.btn-link{display:inline-block;margin-top:12px;color:var(--azul);font-weight:600}
+
+/* rodapé com os elementos */
+.varal{
+  display:flex;justify-content:center;align-items:flex-end;gap:2px;
+  margin:40px -16px 0;padding:0 6px;height:120px;
+}
+.dw{flex:0 1 calc((100% - 12px)/7);display:flex;justify-content:center;align-items:flex-end;height:100%}
+.dw img{
+  max-height:100%;max-width:100%;
+  transform-origin:50% 100%;animation:balanca 3.2s ease-in-out infinite;animation-delay:var(--d);
+  filter:drop-shadow(0 4px 3px rgba(0,0,0,.18));cursor:pointer;
+}
+.dw img:hover,.dw img.pulo{animation:pulinho .55s ease}
+@keyframes balanca{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+@keyframes pulinho{0%,100%{transform:translateY(0)}40%{transform:translateY(-22px) rotate(-6deg)}}
+.chao{height:14px;margin:0 -16px;background:repeating-linear-gradient(90deg,var(--verde) 0 22px,var(--amarelo) 22px 44px)}
+.assinatura{text-align:center;font-family:"Caveat",cursive;font-size:1.3rem;margin-top:14px;color:var(--verde-escuro);transition:color .9s}
+body.noite .assinatura{color:var(--amarelo-claro)}
+
+/* nadadoras flutuando nos cantos */
+.flutua{position:fixed;z-index:0;pointer-events:none;width:clamp(70px,16vw,130px);opacity:.9;filter:drop-shadow(0 6px 6px rgba(0,0,0,.15))}
+.flutua.e{top:70px;left:-14px;animation:boia1 7s ease-in-out infinite}
+.flutua.d{top:110px;right:-10px;animation:boia2 8s ease-in-out infinite}
+@keyframes boia1{0%,100%{transform:translate(0,0) rotate(-6deg)}50%{transform:translate(10px,16px) rotate(4deg)}}
+@keyframes boia2{0%,100%{transform:translate(0,0) rotate(8deg)}50%{transform:translate(-12px,12px) rotate(-3deg)}}
+main > *{position:relative;z-index:1}
+
+/* cachorro do "não" */
+.palco{
+  position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  pointer-events:none;opacity:0;transition:opacity .5s ease;padding:16px;
+}
+.palco.ativo{opacity:1;background:rgba(12,24,56,.45)}
+.palco.ativo.clicavel{pointer-events:auto}
+.palco .dog{width:min(62vw,280px);transform:scale(.4) translateY(60px);transition:transform .6s cubic-bezier(.2,1.4,.4,1);filter:drop-shadow(0 12px 18px rgba(0,0,0,.4));position:relative;z-index:2}
+.palco.ativo .dog{transform:scale(1) translateY(0)}
+.balao{
+  position:relative;z-index:3;max-width:320px;background:#fff;color:var(--texto);border-radius:18px;
+  padding:14px 18px;font-weight:600;font-size:1.08rem;line-height:1.35;text-align:center;margin-bottom:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);transform:scale(.6);opacity:0;transition:all .4s .35s;
+}
+.balao::after{content:"";position:absolute;left:50%;bottom:-12px;transform:translateX(-50%);border:12px solid transparent;border-top-color:#fff;border-bottom:0}
+.palco.ativo .balao{transform:scale(1);opacity:1}
+.fumaca{position:absolute;left:50%;top:55%;width:10px;height:10px;z-index:1}
+.fumaca span{
+  position:absolute;width:var(--s);height:var(--s);border-radius:50%;
+  background:radial-gradient(circle,var(--c) 0%,transparent 70%);
+  opacity:0;left:calc(var(--s) / -2);top:calc(var(--s) / -2);
+}
+.palco.ativo .fumaca span{animation:fumaca 2.6s ease-out forwards;animation-delay:var(--d)}
+@keyframes fumaca{0%{opacity:.85;transform:translate(0,0) scale(.3)}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(1.6)}}
+
+/* mergulho do sucesso */
+.mergulhadora{position:fixed;z-index:60;width:clamp(110px,28vw,180px);pointer-events:none;left:-30vw;top:-30vh}
+.mergulhadora.vai{animation:mergulha 2.4s cubic-bezier(.45,.05,.6,1) forwards}
+@keyframes mergulha{
+  0%{left:-30vw;top:-25vh;transform:rotate(-40deg)}
+  45%{left:38vw;top:12vh;transform:rotate(-5deg)}
+  100%{left:60vw;top:110vh;transform:rotate(25deg)}
+}
+.bolha{position:fixed;z-index:59;pointer-events:none;border-radius:50%;animation:bolha 1.6s ease-out forwards}
+@keyframes bolha{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:translateY(-40px) scale(.2)}}
+.splash{position:fixed;z-index:58;left:50%;bottom:-40px;width:10px;height:10px;pointer-events:none}
+.splash i{position:absolute;width:12px;height:12px;border-radius:50%;animation:splash 1.2s ease-out forwards}
+@keyframes splash{0%{transform:translate(0,0);opacity:1}100%{transform:translate(var(--x),var(--y));opacity:0}}
+
+/* encerrado */
+body.encerrado .so-aberto{display:none!important}
+
+@media (max-width:380px){
+  .infos{grid-template-columns:1fr}
+  .psiu{padding-left:60px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="calcadao" aria-hidden="true"></div>
+<div class="ceu-noite" aria-hidden="true"></div>
+<img class="flutua e" src="img/mergulho2.png" alt="" aria-hidden="true">
+<img class="flutua d" src="img/mergulho.png" alt="" aria-hidden="true">
+
+<main>
+  <div class="gambiarra" aria-hidden="true">
+    <svg viewBox="0 0 100 70" preserveAspectRatio="none"><path d="M0 8 Q25 48 50 30 T100 8" fill="none" stroke="#3a3a3a" stroke-width="1.4" vector-effect="non-scaling-stroke"/></svg>
+    <div class="lampadas" id="lampadas"></div>
+  </div>
+
+  <header class="hero">
+    <span class="selo">🤫 Aniversário surpresa</span>
+    <h1 class="nome">Maria<br>Vitória</h1>
+    <p class="subtitulo">bora de boteco, chinelo e piscina?</p>
+    <p class="contagem" id="contagem"></p>
+  </header>
+
+  <section class="psiu" role="note">
+    <span class="dedo" aria-hidden="true">🤫</span>
+    <strong>PSIU! É SURPRESA!</strong>
+    <p>A Mavi não sabe de nada. Não conta, não dá indireta e nada de postar story antes da hora!</p>
+  </section>
+
+  <section class="infos">
+    <div class="info">
+      <div class="dia">21</div>
+      <div class="mes">de novembro</div>
+      <small>sábado<br>das 9h às 18h</small>
+    </div>
+    <div class="info">
+      <div class="local">Chácara Paraíso do Sol</div>
+      <small>Estr. do Galarda, 818<br>Jd. Santa Nely · Campo Largo/PR</small>
+      <small><a href="https://maps.google.com/?q=Ch%C3%A1cara+Para%C3%ADso+do+Sol+Estrada+do+Galarda+818+Campo+Largo" target="_blank" rel="noopener">Ver no mapa</a> · <a href="https://www.instagram.com/chacara.paraisodosol/" target="_blank" rel="noopener">Insta</a></small>
+    </div>
+  </section>
+
+  <section class="dayuse">
+    <div class="preco">R$ 50</div>
+    <p><strong>Day use por pessoa</strong> (valor de 05/11, pode mudar até o dia). Leve roupa de banho, chinelo, protetor e muita disposição.</p>
+  </section>
+
+  <section class="comanda" id="comanda">
+    <div class="medalhao">
+      <img id="foto" src="img/mavi.jpg" alt="Maria Vitória">
+    </div>
+    <span class="medalhao-emoji" aria-hidden="true">🍺</span>
+
+    <div class="cabecalho"><span>Comanda nº 2111</span><span>Mesa da Mavi</span></div>
+
+    <div id="area-form">
+      <h2 id="titulo-form">Confirme sua presença</h2>
+      <p class="prazo so-aberto">Por favor, confirme até 18/11</p>
+
+      <form id="form" class="so-aberto" novalidate>
+        <div class="escolha" role="group" aria-label="Você vai?">
+          <button type="button" class="sim" data-v="sim" aria-pressed="false">Tô dentro! 🏖️</button>
+          <button type="button" class="nao" data-v="nao" aria-pressed="false">Não poderei 😢</button>
+        </div>
+        <div class="campo" id="c-presenca"><div class="msg-erro">Escolhe uma opção aí em cima 👆</div></div>
+
+        <div class="campo" id="c-nome">
+          <label for="nome">Seu nome completo</label>
+          <input id="nome" name="nome" autocomplete="name" placeholder="Nome e sobrenome">
+          <div class="msg-erro">Coloca nome e sobrenome, por favor</div>
+        </div>
+
+        <div class="campo so-sim" id="c-acomp">
+          <label for="acomp">Vai levar acompanhante?</label>
+          <select id="acomp" name="num_acompanhantes">
+            <option value="0">Não, vou só eu</option>
+            <option value="1">Sim, 1 pessoa</option>
+            <option value="2">Sim, 2 pessoas</option>
+            <option value="3">Sim, 3 pessoas</option>
+            <option value="4">Sim, 4 pessoas</option>
+          </select>
+        </div>
+        <div id="nomes-acomp" class="so-sim"></div>
+
+        <div class="campo" id="c-tel">
+          <label for="tel">Telefone / WhatsApp <span class="opc">(opcional)</span></label>
+          <input id="tel" name="telefone" inputmode="tel" autocomplete="tel" placeholder="(41) 90000-0000">
+          <div class="msg-erro">Esse número parece incompleto</div>
+        </div>
+
+        <div class="campo" id="c-recado">
+          <label for="recado">Deixa um recado pra Mavi <span class="opc">(opcional, ela só vê no dia 🤫)</span></label>
+          <textarea id="recado" name="recado" maxlength="500" placeholder="Feliz aniversário, Mavi!"></textarea>
+        </div>
+
+        <button type="submit" class="enviar" id="btn-enviar">Fechar a comanda 🍺</button>
+        <p class="nota">Confirme até 18/11. Os dados são só para a organização da festa.</p>
+      </form>
+    </div>
+  </section>
+
+  <div class="varal" id="varal" aria-hidden="true">
+    <div class="dw"><img src="img/guarda-sol.png" alt="" style="--d:0s"></div>
+    <div class="dw"><img src="img/cadeira-vermelha.png" alt="" style="--d:.3s"></div>
+    <div class="dw"><img src="img/copo.png" alt="" style="--d:.6s"></div>
+    <div class="dw"><img src="img/mesa-amarela.png" alt="" style="--d:.9s"></div>
+    <div class="dw"><img src="img/chinelo.png" alt="" style="--d:1.2s"></div>
+    <div class="dw"><img src="img/cadeira-azul.png" alt="" style="--d:1.5s"></div>
+    <div class="dw"><img src="img/nadadora-prancha.png" alt="" style="--d:1.8s"></div>
+  </div>
+  <div class="chao" aria-hidden="true"></div>
+  <p class="assinatura">Te esperamos lá! 💚💛</p>
+</main>
+
+<div class="palco" id="palco" aria-live="polite">
+  <div class="balao" id="balao"></div>
+  <img class="dog" src="img/dog.png" alt="Cachorro de óculos escuros">
+  <div class="fumaca" id="fumaca"></div>
+</div>
+<img class="mergulhadora" id="mergulhadora" src="img/mergulho.png" alt="" aria-hidden="true">
+
+<script>
+/* ====== CONFIGURAÇÃO ====== */
+const CONFIG = {
+  // URL do Google Apps Script terminando em /exec (vazio = não envia, só testa)
+  ENDPOINT: "",
+  // Nome da aba da planilha onde as respostas entram
+  ABA: "Mavi",
+  // Opcional: 55 + DDD + número, só dígitos. Mostra "Avisar no WhatsApp" no sucesso.
+  WHATSAPP: "",
+  NOME_CURTO: "Mavi",
+  DATA_FESTA: new Date(2026, 10, 21, 9, 0, 0),   // 21/11/2026 9h (mês 0 = janeiro)
+  PRAZO_FIM: new Date(2026, 10, 19, 0, 0, 0),    // fecha à meia-noite de 18 para 19/11
+  FRASE_NAO: "Vai perder? Então sobra mais cerveja pra mim 🍺😎",
+  FRASE_ENCERRADO: "Ih, a comanda já fechou! As confirmações iam até 18/11. Fala direto com quem te mandou o convite 😎"
+};
+
+/* ====== lampadinhas da gambiarra ====== */
+(function(){
+  const cores=["#ffcc29","#00b050","#3d6bff","#ff5a5a","#ffffff","#ffa630"];
+  const box=document.getElementById("lampadas");
+  const n = window.innerWidth < 480 ? 11 : 15;
+  for(let i=0;i<n;i++){
+    const t=(i+.5)/n;
+    // acompanha a curva do fio (Q 25 48 50 30 T 100 8)
+    let y;
+    if(t<.5){const u=t*2;y=(1-u)*(1-u)*8+2*(1-u)*u*48+u*u*30;}
+    else{const u=(t-.5)*2;y=(1-u)*(1-u)*30+2*(1-u)*u*12+u*u*8;}
+    const b=document.createElement("span");
+    b.className="lampada";
+    b.style.setProperty("--y",(y+2)+"px");
+    b.style.setProperty("--c",cores[i%cores.length]);
+    b.style.setProperty("--d",(i*.17)+"s");
+    box.appendChild(b);
+  }
+})();
+
+/* ====== foto do medalhão (fallback se não tiver foto) ====== */
+const foto=document.getElementById("foto");
+foto.addEventListener("error",()=>{foto.src="img/copo.png";foto.classList.add("fallback");},{once:true});
+
+/* ====== contagem regressiva ====== */
+(function(){
+  const el=document.getElementById("contagem");
+  const hoje=new Date(); hoje.setHours(0,0,0,0);
+  const festa=new Date(CONFIG.DATA_FESTA); festa.setHours(0,0,0,0);
+  const d=Math.round((festa-hoje)/86400000);
+  if(d>1) el.textContent=`faltam ${d} dias ☀️`;
+  else if(d===1) el.textContent="é amanhã! ☀️";
+  else if(d===0) el.textContent="é hoje!!! 🎉";
+})();
+
+/* ====== pulinho no toque (celular) ====== */
+document.querySelectorAll(".dw img").forEach(img=>{
+  img.addEventListener("click",()=>{img.classList.remove("pulo");void img.offsetWidth;img.classList.add("pulo");});
+  img.addEventListener("animationend",e=>{if(e.animationName==="pulinho")img.classList.remove("pulo");});
+});
+
+/* ====== cachorro do "não" ====== */
+const palco=document.getElementById("palco");
+const balao=document.getElementById("balao");
+let timerPalco=null;
+function soltaFumaca(){
+  const f=document.getElementById("fumaca"); f.innerHTML="";
+  const cores=["#00843dcc","#ffcc29cc","#1f3fa8cc","#00b050aa","#ffe680aa"];
+  for(let i=0;i<22;i++){
+    const s=document.createElement("span");
+    const ang=Math.random()*Math.PI*2, r=80+Math.random()*120;
+    s.style.setProperty("--s",(60+Math.random()*90)+"px");
+    s.style.setProperty("--c",cores[i%cores.length]);
+    s.style.setProperty("--x",Math.cos(ang)*r+"px");
+    s.style.setProperty("--y",Math.sin(ang)*r-40+"px");
+    s.style.setProperty("--d",(Math.random()*.4)+"s");
+    f.appendChild(s);
+  }
+}
+function mostraDog(frase, fixo){
+  balao.textContent=frase;
+  palco.classList.remove("ativo");void palco.offsetWidth;
+  soltaFumaca();
+  palco.classList.add("ativo");
+  palco.classList.add("clicavel");
+  clearTimeout(timerPalco);
+  if(!fixo) timerPalco=setTimeout(escondeDog,5000);
+}
+function escondeDog(){palco.classList.remove("ativo","clicavel");clearTimeout(timerPalco);}
+palco.addEventListener("click",escondeDog);
+
+/* ====== mergulho do sucesso ====== */
+function mergulho(){
+  const m=document.getElementById("mergulhadora");
+  m.classList.remove("vai");void m.offsetWidth;m.classList.add("vai");
+  const cores=["#ffffff","#7fd3ff","#ffcc29","#00b050"];
+  const inicio=performance.now();
+  (function rastro(){
+    const t=performance.now()-inicio;
+    if(t>2300) return splash();
+    const r=m.getBoundingClientRect();
+    for(let i=0;i<2;i++){
+      const b=document.createElement("span");
+      const s=6+Math.random()*12;
+      b.className="bolha";
+      b.style.cssText=`width:${s}px;height:${s}px;left:${r.left+r.width*.3+Math.random()*r.width*.4}px;top:${r.top+Math.random()*r.height*.5}px;background:${cores[(Math.random()*cores.length)|0]};box-shadow:0 0 6px #fff8`;
+      document.body.appendChild(b);
+      setTimeout(()=>b.remove(),1700);
+    }
+    requestAnimationFrame(rastro);
+  })();
+}
+function splash(){
+  const sp=document.createElement("div");sp.className="splash";
+  sp.style.left="60vw";
+  for(let i=0;i<26;i++){
+    const g=document.createElement("i");
+    const ang=Math.PI+Math.random()*Math.PI, r=60+Math.random()*140;
+    g.style.setProperty("--x",Math.cos(ang)*r+"px");
+    g.style.setProperty("--y",Math.sin(ang)*r*1.4+"px");
+    g.style.background=["#7fd3ff","#ffffff","#3d9bff"][i%3];
+    sp.appendChild(g);
+  }
+  document.body.appendChild(sp);
+  setTimeout(()=>sp.remove(),1400);
+}
+
+/* ====== formulário ====== */
+const form=document.getElementById("form");
+const botoes=form.querySelectorAll(".escolha button");
+const selAcomp=document.getElementById("acomp");
+const boxNomes=document.getElementById("nomes-acomp");
+const tel=document.getElementById("tel");
+let presenca="";
+
+botoes.forEach(b=>b.addEventListener("click",()=>{
+  presenca=b.dataset.v;
+  botoes.forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));
+  document.getElementById("c-presenca").classList.remove("erro");
+  const nao=presenca==="nao";
+  form.querySelectorAll(".so-sim").forEach(el=>el.classList.toggle("escondido",nao));
+  document.body.classList.toggle("noite",nao);
+  if(nao) mostraDog(CONFIG.FRASE_NAO,false); else escondeDog();
+}));
+
+function desenhaNomes(){
+  const n=+selAcomp.value;
+  const atuais=[...boxNomes.querySelectorAll("input")].map(i=>i.value);
+  boxNomes.innerHTML="";
+  for(let i=0;i<n;i++){
+    const d=document.createElement("div");
+    d.className="campo";
+    d.innerHTML=`<label for="ac${i}">Nome do acompanhante ${n>1?i+1:""}</label>
+      <input id="ac${i}" class="nome-acomp" placeholder="Nome e sobrenome" autocomplete="off">
+      <div class="msg-erro">Coloca o nome desse acompanhante</div>`;
+    boxNomes.appendChild(d);
+    d.querySelector("input").value=atuais[i]||"";
+  }
+}
+selAcomp.addEventListener("change",desenhaNomes);
+
+tel.addEventListener("input",()=>{
+  let v=tel.value.replace(/\D/g,"").slice(0,11);
+  if(v.length>10) v=v.replace(/^(\d{2})(\d{5})(\d{0,4}).*/,"($1) $2-$3");
+  else if(v.length>6) v=v.replace(/^(\d{2})(\d{4})(\d{0,4}).*/,"($1) $2-$3");
+  else if(v.length>2) v=v.replace(/^(\d{2})(\d{0,5})/,"($1) $2");
+  else if(v.length>0) v=v.replace(/^(\d*)/,"($1");
+  tel.value=v;
+});
+
+function marca(id,ok){document.getElementById(id).classList.toggle("erro",!ok);return ok;}
+
+function valida(){
+  let ok=true;
+  ok=marca("c-presenca",!!presenca)&&ok;
+  const nome=document.getElementById("nome").value.trim();
+  ok=marca("c-nome",nome.split(/\s+/).filter(p=>p.length>1).length>=2)&&ok;
+  const dig=tel.value.replace(/\D/g,"");
+  ok=marca("c-tel",dig.length===0||dig.length>=10)&&ok;
+  if(presenca==="sim"){
+    boxNomes.querySelectorAll(".campo").forEach(c=>{
+      const v=c.querySelector("input").value.trim();
+      c.classList.toggle("erro",!v); if(!v) ok=false;
+    });
+  }
+  return ok;
+}
+
+function guardaCopia(dados){
+  try{
+    const k="convite-"+CONFIG.ABA.toLowerCase();
+    const lista=JSON.parse(localStorage.getItem(k)||"[]");
+    lista.push(dados); localStorage.setItem(k,JSON.stringify(lista));
+  }catch(e){}
+}
+
+form.addEventListener("submit",async e=>{
+  e.preventDefault();
+  if(!valida()){
+    const primeiro=form.querySelector(".erro");
+    if(primeiro) primeiro.scrollIntoView({behavior:"smooth",block:"center"});
+    return;
+  }
+  const sim=presenca==="sim";
+  const nomesAc=[...boxNomes.querySelectorAll("input")].map(i=>i.value.trim()).filter(Boolean);
+  const dados={
+    aba:CONFIG.ABA,
+    enviado_em:new Date().toLocaleString("pt-BR"),
+    presenca:sim?"Sim":"Não",
+    nome:document.getElementById("nome").value.trim(),
+    num_acompanhantes:sim?selAcomp.value:"0",
+    nomes_acompanhantes:sim?nomesAc.join(", "):"",
+    total_pessoas:sim?String(1+(+selAcomp.value)):"0",
+    telefone:tel.value.trim(),
+    recado:document.getElementById("recado").value.trim()
+  };
+  const btn=document.getElementById("btn-enviar");
+  btn.disabled=true; btn.textContent="Enviando...";
+  guardaCopia(dados);
+  try{
+    if(CONFIG.ENDPOINT){
+      await fetch(CONFIG.ENDPOINT,{method:"POST",mode:"no-cors",body:new URLSearchParams(dados)});
+    }else{
+      await new Promise(r=>setTimeout(r,600));
+    }
+    mostraSucesso(dados);
+  }catch(err){
+    btn.disabled=false; btn.textContent="Fechar a comanda 🍺";
+    alert("Não consegui enviar agora 😕 Confere sua internet e tenta de novo.");
+  }
+});
+
+function esc(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+
+function mostraSucesso(d){
+  const primeiro=esc(d.nome.split(/\s+/)[0]);
+  const area=document.getElementById("area-form");
+  const zap=CONFIG.WHATSAPP?`<a class="btn-link" target="_blank" rel="noopener" href="https://wa.me/${CONFIG.WHATSAPP}?text=${encodeURIComponent(`Oi! Respondi o convite da ${CONFIG.NOME_CURTO}: ${d.presenca==="Sim"?"vou! 🎉":"não vou poder 😢"} (${d.nome})`)}">Avisar no WhatsApp</a>`:"";
+  if(d.presenca==="Sim"){
+    document.body.classList.remove("noite"); escondeDog();
+    area.innerHTML=`<div class="sucesso">
+      <div class="big">🍻</div>
+      <h2>Presença confirmada! 🎉</h2>
+      <p>Que alegria, ${primeiro}! Te esperamos no dia <strong>21/11</strong> na Chácara Paraíso do Sol pra comemorar a ${CONFIG.NOME_CURTO}.</p>
+      <p class="lembrete">🤫 Lembra: é surpresa! Bico fechado até lá.</p>
+      ${zap}<br><a class="btn-link" href="#" onclick="location.reload();return false;">Responder de novo</a>
+    </div>`;
+    mergulho();
+  }else{
+    area.innerHTML=`<div class="sucesso">
+      <div class="big">💌</div>
+      <h2>Resposta enviada</h2>
+      <p>Obrigado por avisar, ${primeiro}. Vamos sentir sua falta!</p>
+      <p class="lembrete">🤫 E mesmo sem ir: não conta nada pra ${CONFIG.NOME_CURTO}!</p>
+      ${zap}<br><a class="btn-link" href="#" onclick="location.reload();return false;">Responder de novo</a>
+    </div>`;
+  }
+  document.getElementById("comanda").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+/* ====== encerramento automático ====== */
+if(new Date()>=CONFIG.PRAZO_FIM){
+  document.body.classList.add("encerrado","noite");
+  document.getElementById("titulo-form").textContent="As confirmações foram encerradas";
+  mostraDog(CONFIG.FRASE_ENCERRADO,true);
+}
+</script>
+</body>
+</html>

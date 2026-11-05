@@ -9,8 +9,7 @@
  *    Executar como: Eu  |  Quem pode acessar: Qualquer pessoa
  * 4. Autorize, copie a URL que termina em /exec e cole em CONFIG.ENDPOINT no index.html.
  */
-const CAMPOS = ['enviado_em', 'presenca', 'nome', 'num_acompanhantes',
-                'nomes_acompanhantes', 'total_pessoas', 'telefone', 'recado'];
+const CAMPOS = ['enviado_em', 'presenca', 'nome'];
 const ABAS_PERMITIDAS = ['Mavi', 'Kaue'];
 
 function doPost(e) {

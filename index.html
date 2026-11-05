@@ -44,8 +44,9 @@
 }
 /* tela grande: a orla inteira vista de cima, com a faixa de areia (e o convite) no centro */
 @media (min-width:960px){
-  :root{--w-calcada:calc((100vw - 760px) / 2);--w-mar:calc((100vw - 760px) / 2)}
-  .calcadao{background-size:110px 220px !important}
+  /* calçadão só como faixa na borda; o resto é areia */
+  :root{--w-calcada:150px;--w-mar:calc((100vw - 760px) / 2)}
+  .calcadao{background-size:60px 120px !important}
 }
 *{box-sizing:border-box}
 html,body{margin:0}
@@ -104,7 +105,7 @@ body{
 
 /* ---------- gaivotas e ciclista ---------- */
 .gaivota{position:fixed;z-index:3;pointer-events:none;width:var(--t);left:var(--x);top:0;
-  filter:drop-shadow(14px 20px 3px rgba(60,45,15,.07));animation:voa var(--dur) linear infinite;animation-delay:var(--delay)}
+  animation:voa var(--dur) linear infinite;animation-delay:var(--delay)}
 .gaivota .asas{animation:bate .32s ease-in-out infinite alternate}
 .gaivota.plana .asas{animation-duration:1.4s}
 @keyframes bate{from{transform:scaleX(1)}to{transform:scaleX(.5)}}
@@ -369,8 +370,32 @@ h1.nome .vitoria{
 
 body.encerrado .so-aberto{display:none!important}
 
+/* celular: letras menores pra caber tudo */
+@media (max-width:480px){
+  .eyebrow{font-size:1.02rem}
+  .idade{font-size:1.35rem}
+  .lede{font-size:.88rem;max-width:280px}
+  .shh{padding:20px 14px 14px}
+  .shh strong{font-size:1.3rem}
+  .shh p{font-size:.84rem}
+  .cardapio{padding:24px 14px 16px}
+  .cardapio h2{font-size:1.9rem}
+  .linhas li{font-size:1.12rem;gap:6px}
+  .linhas li::before{width:11px;height:11px}
+  .endereco{font-size:.8rem}
+  .ingresso{padding:16px 14px}
+  .ingresso h3{font-size:1.3rem}
+  .ingresso p{font-size:.86rem;margin:6px 0 12px}
+  .btn-ingresso{font-size:1.05rem;padding:10px 14px}
+  .ingresso small{font-size:.72rem}
+  .comanda{padding:76px 16px 28px}
+  .cabecalho{font-size:.9rem}
+  .comanda h2{font-size:1.45rem}
+  .escolha button{font-size:1.05rem;padding:11px 4px}
+  .enviar{font-size:1.2rem}
+  .nota{font-size:.74rem}
+}
 @media (max-width:400px){
-  .linhas li{font-size:1.25rem}
   .selo-contagem{width:92px;height:92px;right:-10px}
   .selo-contagem strong{font-size:2.2rem}
 }
@@ -458,6 +483,7 @@ body.encerrado .so-aberto{display:none!important}
     </h1>
     <svg class="risco" viewBox="0 0 240 14" aria-hidden="true"><path d="M4 9 C60 2 120 2 236 7" fill="none" stroke="#e0362c" stroke-width="4" stroke-linecap="round"/></svg>
     <div class="idade">faz <b>28</b> anos</div>
+    <p class="lede">Um sábado de sol, chinelo, piscina e copo americano pra comemorar a Mavi.</p>
     <div class="cena">
       <div class="sombra-gs"></div>
       <img class="gs" src="img/guarda-sol.png" alt="">
@@ -470,23 +496,25 @@ body.encerrado .so-aberto{display:none!important}
   <section class="shh" role="note">
     <span class="tag">SHHH!</span>
     <strong>Ela não sabe de nada.</strong>
-    <p>Bico fechado até o dia 21.</p>
+    <p>Nada de comentar, dar indireta ou postar antes da hora. Bico fechado até o dia 21.</p>
   </section>
 
   <section class="cardapio">
     <h2>O ROLÊ</h2>
     <ul class="linhas">
-      <li><span>Sábado</span><em>21/11</em></li>
-      <li><span>Das</span><em>9h às 18h</em></li>
+      <li><span>Quando</span><em>Sáb, 21/11</em></li>
+      <li><span>Horário</span><em>9h às 18h</em></li>
+      <li><span>Day use</span><em>R$ 50,00</em></li>
     </ul>
-    <p class="endereco">Chácara Paraíso do Sol · Campo Largo/PR<br>
-      <a href="https://maps.google.com/?q=Ch%C3%A1cara+Para%C3%ADso+do+Sol+Estrada+do+Galarda+818+Campo+Largo" target="_blank" rel="noopener">Ver no mapa</a></p>
+    <p class="endereco"><strong>Chácara Paraíso do Sol</strong><br>Estr. do Galarda, 818 · Jd. Santa Nely · Campo Largo/PR<br>
+      <a href="https://maps.google.com/?q=Ch%C3%A1cara+Para%C3%ADso+do+Sol+Estrada+do+Galarda+818+Campo+Largo" target="_blank" rel="noopener">Abrir no mapa</a> · <a href="https://www.instagram.com/chacara.paraisodosol/" target="_blank" rel="noopener">Instagram</a></p>
   </section>
 
   <section class="ingresso">
-    <h3>Ingresso à parte</h3>
-    <p>Cada um compra o seu day use (R$ 50) no site da chácara, para o dia <strong>21/11</strong>.</p>
-    <a class="btn-ingresso" href="https://chacaraparaisodosol.com.br/loja/" target="_blank" rel="noopener">Comprar ingresso</a>
+    <h3>Garanta seu ingresso</h3>
+    <p>O day use não está incluso. Cada convidado compra o seu direto no site da chácara, escolhendo o dia <strong>21/11</strong>.</p>
+    <a class="btn-ingresso" href="https://chacaraparaisodosol.com.br/loja/" target="_blank" rel="noopener">Comprar no site da chácara</a>
+    <small>Valor consultado em 05/11: R$ 50 por pessoa. Pode mudar até o dia.</small>
   </section>
 
   <div class="comanda-wrap" id="comanda">
@@ -514,6 +542,7 @@ body.encerrado .so-aberto{display:none!important}
           </div>
 
           <button type="submit" class="enviar" id="btn-enviar">Fechar a comanda</button>
+          <p class="nota">Seu nome é usado só para a organização da festa.</p>
           <p class="falha" id="falha" hidden>Não consegui enviar agora. Confira sua internet e tente de novo.</p>
         </form>
       </div>

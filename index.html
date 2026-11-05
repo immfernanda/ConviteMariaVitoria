@@ -40,6 +40,14 @@
   --texto:"Outfit",system-ui,-apple-system,"Segoe UI",sans-serif;
   --w-calcada:clamp(30px,12vw,150px);
   --w-mar:clamp(64px,22vw,300px);
+  --w-ondas:var(--w-calcada); /* largura só das ondas do calçadão */
+}
+/* tela grande: a orla inteira vista de cima, com a faixa de areia (e o convite) no centro */
+@media (min-width:960px){
+  :root{--w-calcada:calc((100vw - 760px) / 2);--w-mar:calc((100vw - 760px) / 2)}
+}
+@media (min-width:1280px){
+  :root{--w-ondas:clamp(90px,calc(var(--w-calcada) * .42),170px)}
 }
 *{box-sizing:border-box}
 html,body{margin:0}
@@ -55,7 +63,7 @@ body{
 
 /* ---------- calçadão de Copacabana (semicírculos encaixados) ---------- */
 .calcadao{
-  position:fixed;top:0;bottom:0;left:0;width:var(--w-calcada);z-index:0;pointer-events:none;
+  position:fixed;top:0;bottom:0;left:calc(var(--w-calcada) - var(--w-ondas));width:var(--w-ondas);z-index:0;pointer-events:none;
   background-color:var(--pedra-clara);
   /* padrão base; o script troca pela versão com mosaico de pedrinhas */
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='400' viewBox='0 0 200 400'%3E%3Cg fill='%23231f20'%3E%3Cpath id='o' d='M100 0A100 100 0 0 0 100 200A100 100 0 0 1 100 400H200A100 100 0 0 0 200 200A100 100 0 0 1 200 0Z'/%3E%3Cuse href='%23o' x='-200'/%3E%3C/g%3E%3C/svg%3E");
@@ -106,10 +114,43 @@ body{
   from{transform:translate(0,110vh) rotate(var(--r))}
   to{transform:translate(var(--dx),-20vh) rotate(var(--r))}
 }
-.ciclista{position:fixed;z-index:1;pointer-events:none;top:0;width:20px;
-  left:calc(var(--w-calcada) / 2 - 10px);
-  filter:drop-shadow(5px 6px 1.5px rgba(0,0,0,.3));animation:pedala 15s linear infinite;animation-delay:2s}
-@keyframes pedala{from{transform:translate(0,-70px)}to{transform:translate(0,calc(100vh + 70px))}}
+/* gente, bikes e carros vistos de cima (desenhados apontando pra cima) */
+.movel{position:fixed;z-index:1;pointer-events:none;top:0;filter:drop-shadow(4px 5px 1.5px rgba(0,0,0,.28));
+  animation-timing-function:linear;animation-iteration-count:infinite}
+@keyframes sobe{from{transform:translateY(calc(100vh + 90px))}to{transform:translateY(-90px)}}
+@keyframes desce{from{transform:translateY(-90px) rotate(180deg)}to{transform:translateY(calc(100vh + 90px)) rotate(180deg)}}
+.movel .passo{animation:ginga .5s ease-in-out infinite alternate;transform-origin:0 0}
+@keyframes ginga{from{transform:rotate(-7deg)}to{transform:rotate(7deg)}}
+.d{display:none}
+
+/* avenida e ciclovia (só em tela grande) */
+.avenida,.ciclovia{position:fixed;top:0;bottom:0;z-index:0;pointer-events:none;display:none}
+.avenida{
+  left:0;width:calc(var(--w-calcada) - var(--w-ondas) - 40px);
+  background-color:#45484c;
+  background-image:
+    linear-gradient(#e9c13c,#e9c13c),linear-gradient(#e9c13c,#e9c13c),
+    repeating-linear-gradient(180deg,#eeeeea 0 28px,transparent 28px 64px),
+    repeating-linear-gradient(180deg,#eeeeea 0 28px,transparent 28px 64px),
+    radial-gradient(rgba(255,255,255,.07) 1px,transparent 1.3px),
+    radial-gradient(rgba(0,0,0,.18) 1px,transparent 1.3px);
+  background-size:3px 100%,3px 100%,3px 64px,3px 64px,5px 5px,7px 7px;
+  background-position:calc(50% - 4px) 0,calc(50% + 4px) 0,25% 0,75% 0,0 0,2px 3px;
+  background-repeat:no-repeat,no-repeat,repeat-y,repeat-y,repeat,repeat;
+  box-shadow:inset -5px 0 0 #cfc8ba;
+}
+.ciclovia{
+  left:calc(var(--w-calcada) - var(--w-ondas) - 40px);width:40px;
+  background-color:#b8473b;
+  background-image:repeating-linear-gradient(180deg,rgba(255,255,255,.85) 0 16px,transparent 16px 34px);
+  background-size:2px 34px;background-position:50% 0;background-repeat:repeat-y;
+  box-shadow:inset 2px 0 0 rgba(255,255,255,.8),inset -2px 0 0 rgba(255,255,255,.8);
+}
+@media (min-width:1280px){
+  .avenida,.ciclovia{display:block}
+  .movel.d{display:block}
+  .movel.m{display:none}
+}
 
 /* ---------- conteúdo ---------- */
 main{
@@ -364,18 +405,42 @@ body.encerrado .so-aberto{display:none!important}
 <svg class="gaivota" style="--t:46px;--x:62%;--dx:-30vw;--r:-25deg;--dur:24s;--delay:-6s" viewBox="-30 -20 60 40" aria-hidden="true"><use href="#ave"/></svg>
 <svg class="gaivota plana" style="--t:34px;--x:78%;--dx:-45vw;--r:-35deg;--dur:31s;--delay:-19s" viewBox="-30 -20 60 40" aria-hidden="true"><use href="#ave"/></svg>
 <svg class="gaivota" style="--t:40px;--x:30%;--dx:20vw;--r:15deg;--dur:28s;--delay:-12s" viewBox="-30 -20 60 40" aria-hidden="true"><use href="#ave"/></svg>
-<svg class="ciclista" viewBox="-10 -24 20 48" aria-hidden="true">
-  <rect x="-1.4" y="-22" width="2.8" height="12" rx="1.4" fill="#222"/>
-  <rect x="-1.4" y="10" width="2.8" height="12" rx="1.4" fill="#222"/>
-  <rect x="-.8" y="-12" width="1.6" height="24" fill="#d22"/>
-  <rect x="-7" y="-13" width="14" height="1.8" rx=".9" fill="#333"/>
-  <path d="M-5 -1 L-6.2 -12 M5 -1 L6.2 -12" stroke="#c98d5a" stroke-width="1.8" stroke-linecap="round"/>
-  <ellipse cx="0" cy="1" rx="7" ry="4.5" fill="#f6c445"/>
-  <circle cx="0" cy="-1.5" r="3.6" fill="#e0362c"/>
-  <path d="M-2 -3 h4" stroke="#fff" stroke-width=".7"/>
-</svg>
+<div class="avenida" aria-hidden="true"></div>
+<div class="ciclovia" aria-hidden="true"></div>
+<div id="movimento" aria-hidden="true"></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
+    <!-- ciclista visto de cima, apontando pra cima -->
+    <g id="bike">
+      <rect x="-1.4" y="-22" width="2.8" height="12" rx="1.4" fill="#222"/>
+      <rect x="-1.4" y="10" width="2.8" height="12" rx="1.4" fill="#222"/>
+      <rect x="-.8" y="-12" width="1.6" height="24" style="fill:var(--quadro,#d22)"/>
+      <rect x="-7" y="-13" width="14" height="1.8" rx=".9" fill="#333"/>
+      <path d="M-5 -1 L-6.2 -12 M5 -1 L6.2 -12" style="stroke:var(--pele,#c98d5a)" stroke-width="1.8" stroke-linecap="round"/>
+      <ellipse cx="0" cy="1" rx="7" ry="4.5" style="fill:var(--camisa,#f6c445)"/>
+      <circle cx="0" cy="-1.5" r="3.6" style="fill:var(--capacete,#e0362c)"/>
+      <path d="M-2 -3 h4" stroke="#fff" stroke-width=".7"/>
+    </g>
+    <!-- pessoa caminhando vista de cima -->
+    <g id="pessoa">
+      <g class="passo">
+        <ellipse cx="-6.6" cy="1" rx="1.7" ry="2.6" style="fill:var(--pele,#c98d5a)"/>
+        <ellipse cx="6.6" cy="1" rx="1.7" ry="2.6" style="fill:var(--pele,#c98d5a)"/>
+        <ellipse cx="0" cy="0.5" rx="6.2" ry="3.6" style="fill:var(--camisa,#2fae5a)"/>
+      </g>
+      <circle cx="0" cy="-.2" r="3.1" style="fill:var(--cabelo,#3a2a1e)"/>
+    </g>
+    <!-- carro visto de cima -->
+    <g id="carro">
+      <rect x="-10" y="-22" width="20" height="44" rx="6" style="fill:var(--cor,#e0362c)"/>
+      <rect x="-8.2" y="-12" width="16.4" height="7" rx="2.5" fill="#22303c" opacity=".9"/>
+      <rect x="-7.6" y="-4.5" width="15.2" height="13" rx="2" fill="#fff" opacity=".14"/>
+      <rect x="-8" y="10" width="16" height="5" rx="2" fill="#22303c" opacity=".85"/>
+      <rect x="-8" y="-22" width="4" height="2" rx="1" fill="#fff6c8"/>
+      <rect x="4" y="-22" width="4" height="2" rx="1" fill="#fff6c8"/>
+      <rect x="-8" y="20.4" width="4" height="1.6" fill="#ff3b30"/>
+      <rect x="4" y="20.4" width="4" height="1.6" fill="#ff3b30"/>
+    </g>
     <g id="ave">
       <g class="asas">
         <path d="M-2 -1 C-10 -9 -20 -9 -29 -3 C-20 -4 -11 -1 -3 4Z" fill="#fff" stroke="#aeb7bf" stroke-width=".7"/>
@@ -549,6 +614,51 @@ const SVGNS="http://www.w3.org/2000/svg";
     <rect width="200" height="400" filter="url(#rejunte)" opacity=".75"/>
   </svg>`;
   document.querySelector(".calcadao").style.backgroundImage=`url("data:image/svg+xml;charset=utf-8,${encodeURIComponent(s)}")`;
+})();
+
+/* ====== gente, bikes e carros ======
+   m = só celular (no calçadão) · d = só tela grande (avenida, ciclovia e calçadão) */
+(function(){
+  const ondas="(var(--w-calcada) - var(--w-ondas))";           // começo do calçadão
+  const noCalc=f=>`calc(${ondas} + var(--w-ondas) * ${f} - 9px)`;
+  const ciclo=dx=>`calc(${ondas} - 40px + ${dx}px)`;
+  const larg="(var(--w-calcada) - var(--w-ondas) - 40px)";     // largura da avenida
+  const carroW=`min(30px, calc(${larg} * .17))`;
+  const pista=f=>`calc(${larg} * ${f} - ${carroW} / 2)`;
+  const camisas=["#f6c445","#1f4fb4","#e0362c","#2fae5a","#ffffff","#ff8fb1","#7a4fd1","#111"];
+  const cabelos=["#3a2a1e","#151515","#8a5a2b","#e0b860","#5b3a26"];
+  const peles=["#c98d5a","#8d5a3a","#e8b98f","#6b4128","#d9a074"];
+  const carros=["#e0362c","#f4f4f4","#1f4fb4","#222","#f6c445","#9aa3ab"];
+  const r=a=>a[Math.floor(Math.random()*a.length)];
+  const lista=[
+    // celular: tudo no calçadão
+    ["bike","m",noCalc(.3),"sobe",17,-3],["bike","m",noCalc(.68),"desce",21,-12],
+    ["pessoa","m",noCalc(.5),"sobe",36,-9],["pessoa","m",noCalc(.25),"desce",42,-27],["pessoa","m",noCalc(.75),"sobe",48,-38],
+    // tela grande: ciclovia (mão dupla)
+    ["bike","d",ciclo(2),"sobe",14,-2],["bike","d",ciclo(2),"sobe",17,-10],["bike","d",ciclo(20),"desce",15,-6],["bike","d",ciclo(20),"desce",19,-15],
+    // tela grande: pessoas no calçadão
+    ["pessoa","d",noCalc(.2),"sobe",38,-5],["pessoa","d",noCalc(.45),"desce",44,-20],["pessoa","d",noCalc(.7),"sobe",33,-14],
+    ["pessoa","d",noCalc(.85),"desce",40,-31],["pessoa","d",noCalc(.35),"sobe",52,-40],["pessoa","d",noCalc(.6),"desce",47,-3],
+    // tela grande: carros na avenida
+    ["carro","d",pista(.14),"desce",7,-1],["carro","d",pista(.36),"desce",9,-5],["carro","d",pista(.14),"desce",8,-4.5],
+    ["carro","d",pista(.64),"sobe",8,-2],["carro","d",pista(.86),"sobe",10,-7],["carro","d",pista(.64),"sobe",9,-6]
+  ];
+  const tam={bike:[20,48,"-10 -24 20 48"],pessoa:[20,20,"-10 -10 20 20"],carro:[30,60,"-12 -24 24 48"]};
+  const box=document.getElementById("movimento");
+  lista.forEach(([tipo,onde,left,dir,dur,delay])=>{
+    const [w,h,vb]=tam[tipo];
+    const s=document.createElementNS(SVGNS,"svg");
+    s.setAttribute("class",`movel ${onde}`);s.setAttribute("viewBox",vb);
+    if(tipo==="carro"){s.style.width=carroW;s.style.height="auto";s.style.aspectRatio="1 / 2";}
+    else{s.setAttribute("width",w);s.setAttribute("height",h);}
+    s.style.left=left;
+    s.style.animationName=dir;s.style.animationDuration=dur+"s";s.style.animationDelay=delay+"s";
+    s.style.setProperty("--camisa",r(camisas));s.style.setProperty("--cabelo",r(cabelos));
+    s.style.setProperty("--pele",r(peles));s.style.setProperty("--capacete",r(["#e0362c","#1f4fb4","#111","#f6c445","#fff"]));
+    s.style.setProperty("--quadro",r(["#d22","#1f4fb4","#2fae5a","#111"]));s.style.setProperty("--cor",r(carros));
+    s.innerHTML=`<use href="#${tipo}"/>`;
+    box.appendChild(s);
+  });
 })();
 
 /* ====== mar ====== */

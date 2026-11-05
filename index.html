@@ -101,7 +101,8 @@ body{
 @keyframes gira{to{transform:rotate(360deg)}}
 .sol-wrap .halo{position:absolute;left:50%;top:50%;width:250px;height:250px;margin:-125px 0 0 -125px;border-radius:50%;
   background:radial-gradient(circle,rgba(255,241,184,.45) 35%,rgba(255,226,138,0) 70%);animation:pulsa 5s ease-in-out infinite}
-.sol-wrap .disco{opacity:.82}
+.sol-wrap .disco{opacity:.6}
+.sol-wrap .raios-svg,.sol-wrap .halo{opacity:.6}
 @keyframes pulsa{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
 
 /* ---------- gaivotas e ciclista ---------- */
@@ -254,6 +255,8 @@ h1.nome .vitoria{
 .linhas li em{font-style:normal;white-space:nowrap}
 .endereco{margin:14px 0 0;text-align:center;font-size:.9rem;line-height:1.5;color:var(--cinza)}
 .endereco a{color:var(--azul);font-weight:600}
+.rodape{margin-top:22px}
+.cardapio .linhas li:last-child{border-bottom:none}
 
 /* ingresso */
 .ingresso{
@@ -272,12 +275,12 @@ h1.nome .vitoria{
 .ingresso small{display:block;margin-top:10px;opacity:.8;font-size:.8rem}
 
 /* ---------- comanda ---------- */
-.comanda-wrap{position:relative;margin-top:96px;filter:drop-shadow(0 16px 18px var(--sombra))}
+.comanda-wrap{position:relative;margin-top:40px;filter:drop-shadow(0 16px 18px var(--sombra))}
 .comanda{
   position:relative;background-color:var(--papel);color:var(--tinta);
-  padding:80px 22px 32px;
+  padding:30px 22px 32px;
   background-image:repeating-linear-gradient(transparent 0 31px,#ebe1cd 31px 32px);
-  background-position:0 104px;
+  background-position:0 54px;
   -webkit-mask:
     radial-gradient(circle 7px at 50% 0,transparent 98%,#000) top/18px 51% repeat-x,
     radial-gradient(circle 7px at 50% 100%,transparent 98%,#000) bottom/18px 51% repeat-x;
@@ -285,7 +288,7 @@ h1.nome .vitoria{
     radial-gradient(circle 7px at 50% 0,transparent 98%,#000) top/18px 51% repeat-x,
     radial-gradient(circle 7px at 50% 100%,transparent 98%,#000) bottom/18px 51% repeat-x;
 }
-.comanda::before{content:"";position:absolute;left:0;right:0;top:44px;border-top:2px dashed #e3d6bd}
+.comanda::before{content:"";position:absolute;left:0;right:0;top:16px;border-top:2px dashed #e3d6bd}
 .medalhao{
   position:absolute;left:50%;top:-64px;transform:translateX(-50%);z-index:3;
   width:116px;height:136px;border-radius:50%;
@@ -407,7 +410,7 @@ body.encerrado .so-aberto{display:none!important}
   .ingresso p{font-size:.86rem;margin:6px 0 12px}
   .btn-ingresso{font-size:1.05rem;padding:10px 14px}
   .ingresso small{font-size:.72rem}
-  .comanda{padding:76px 16px 28px}
+  .comanda{padding:28px 16px 28px}
   .cabecalho{font-size:.9rem}
   .comanda h2{font-size:1.45rem}
   .escolha button{font-size:1.05rem;padding:11px 4px}
@@ -527,8 +530,6 @@ body.encerrado .so-aberto{display:none!important}
       <li><span>Horário</span><em>9h às 18h</em></li>
       <li><span>Day use</span><em>R$ 50,00</em></li>
     </ul>
-    <p class="endereco"><strong>Chácara Paraíso do Sol</strong><br>Estr. do Galarda, 818 · Jd. Santa Nely · Campo Largo/PR<br>
-      <a href="https://maps.google.com/?q=Ch%C3%A1cara+Para%C3%ADso+do+Sol+Estrada+do+Galarda+818+Campo+Largo" target="_blank" rel="noopener">Abrir no mapa</a> · <a href="https://www.instagram.com/chacara.paraisodosol/" target="_blank" rel="noopener">Instagram</a></p>
   </section>
 
   <section class="ingresso">
@@ -539,7 +540,6 @@ body.encerrado .so-aberto{display:none!important}
   </section>
 
   <div class="comanda-wrap" id="comanda">
-    <div class="medalhao"><img id="foto" class="fallback" src="img/copo.png" alt=""></div>
     <section class="comanda">
       <div class="cabecalho"><span>Comanda nº 2611</span><span>Mesa da Mavi</span></div>
       <span class="carimbo" id="carimbo"></span>
@@ -571,6 +571,8 @@ body.encerrado .so-aberto{display:none!important}
   </div>
 
   <p class="assinatura">Te esperamos lá!</p>
+  <footer class="endereco rodape"><strong>Chácara Paraíso do Sol</strong><br>Estr. do Galarda, 818 · Jd. Santa Nely · Campo Largo/PR<br>
+    <a href="https://maps.google.com/?q=Ch%C3%A1cara+Para%C3%ADso+do+Sol+Estrada+do+Galarda+818+Campo+Largo" target="_blank" rel="noopener">Abrir no mapa</a> · <a href="https://www.instagram.com/chacara.paraisodosol/" target="_blank" rel="noopener">Instagram</a></footer>
 </main>
 
 <div class="palco" id="palco" aria-live="polite">
